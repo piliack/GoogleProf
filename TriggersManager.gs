@@ -17,15 +17,15 @@ var TriggersManager = {
     var haveOnEdit = false;
 
     // verify installed trigger if authorization ok
-    if (ScriptApp.AuthMode == AuthMode.FULL && !dontVerifyOtherTriggers) {
+    if (Main.authMode == ScriptApp.AuthMode.FULL && !dontVerifyOtherTriggers) {
       var triggers = ScriptApp.getUserTriggers(file);
-
+      
       for (var i = 0, l = triggers.length; i < l; i++) {
-        if (file.getId() == triggers[0].getTriggerSourceId()) {
-          if (triggers[0].getEventType() == Constants.ON_OPEN) {
+        if (file.getId() == triggers[i].getTriggerSourceId()) {
+          if (triggers[i].getEventType() == Constants.ON_OPEN) {
             haveOnOpen = true;
           }
-          if (triggers[0].getEventType() == Constants.ON_EDIT) {
+          if (triggers[i].getEventType() == Constants.ON_EDIT) {
             haveOnEdit = true;
           }
         }
@@ -36,7 +36,6 @@ var TriggersManager = {
     if (file.toString() == Constants.SPREADSHEET_TYPE) {
       if (!haveOnOpen) {
         try {
-          Logger.log('new trigger onopen');
           ScriptApp.newTrigger(Constants.FunctionEvents.ON_OPEN)
               .forSpreadsheet(file).onOpen().create();
         } catch (e) {
@@ -44,7 +43,6 @@ var TriggersManager = {
       }
       if (!haveOnEdit) {
         try {
-          Logger.log('new trigger onedit');
           ScriptApp.newTrigger(Constants.FunctionEvents.ON_EDIT)
               .forSpreadsheet(file).onEdit().create();
         } catch (e) {
@@ -56,7 +54,6 @@ var TriggersManager = {
     if (file.toString() == Constants.DOCUMENT_TYPE) {
       if (!haveOnOpen) {
         try {
-          Logger.log('new trigger onopen');
           ScriptApp.newTrigger(Constants.FunctionEvents.ON_OPEN).forDocument(
               file).onOpen().create();
         } catch (e) {
