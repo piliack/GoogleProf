@@ -14,7 +14,7 @@ var AddOnMenuManager = {
 
     if (fileApp != null) {
       fileApp.getUi().createAddonMenu().addItem(
-          LabelsToTranslate.Menus.INSTALL, Constants.ON_ADDON_INSTALL_MENU)
+          LabelsToTranslate.Menus.INSTALL, Constants.ON_ADDON_INSTALL_MENU_FUNC)
           .addToUi();
     }
   },

@@ -37,10 +37,10 @@ var TriggersManager = {
 
       for (var i = 0, l = triggers.length; i < l; i++) {
         if (file.getId() == triggers[i].getTriggerSourceId()) {
-          if (triggers[i].getEventType() == Constants.ON_OPEN) {
+          if (triggers[i].getEventType() == ScriptApp.EventType.ON_OPEN) {
             haveOnOpen = true;
           }
-          if (triggers[i].getEventType() == Constants.ON_EDIT) {
+          if (triggers[i].getEventType() == ScriptApp.EventType.ON_EDIT) {
             haveOnEdit = true;
           }
         }
@@ -51,14 +51,14 @@ var TriggersManager = {
     if (file.toString() == Constants.SPREADSHEET_TYPE) {
       if (!haveOnOpen) {
         try {
-          ScriptApp.newTrigger(Constants.FunctionEvents.ON_OPEN)
+          ScriptApp.newTrigger(Constants.ON_OPEN_FUNC)
               .forSpreadsheet(file).onOpen().create();
         } catch (e) {
         }
       }
       if (!haveOnEdit) {
         try {
-          ScriptApp.newTrigger(Constants.FunctionEvents.ON_EDIT)
+          ScriptApp.newTrigger(Constants.ON_EDIT_FUNC)
               .forSpreadsheet(file).onEdit().create();
         } catch (e) {
         }
@@ -69,7 +69,7 @@ var TriggersManager = {
     if (file.toString() == Constants.DOCUMENT_TYPE) {
       if (!haveOnOpen) {
         try {
-          ScriptApp.newTrigger(Constants.FunctionEvents.ON_OPEN).forDocument(
+          ScriptApp.newTrigger(Constants.ON_OPEN_FUNC).forDocument(
               file).onOpen().create();
         } catch (e) {
         }

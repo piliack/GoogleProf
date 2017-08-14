@@ -2,16 +2,10 @@ var Constants = {
   SPREADSHEET_TYPE : 'Spreadsheet',
   DOCUMENT_TYPE : 'Document',
 
-  ON_OPEN : 'ON_OPEN',
-  ON_INSTALL : 'ON_INSTALL',
-  ON_EDIT : 'ON_EDIT',
+  ON_OPEN_FUNC : 'onOpen',
+  ON_INSTALL_FUNC : 'onInstall',
+  ON_EDIT_FUNC : 'onEdit',
 
-  FunctionEvents : {
-    ON_OPEN : 'onOpen',
-    ON_INSTALL : 'onInstall',
-    ON_EDIT : 'onEdit',
-
-    ON_ADDON_INSTALL_MENU : 'onAddOnInstallMenu',
-  },
+  ON_ADDON_INSTALL_MENU_FUNC : 'onAddOnInstallMenu',
 
 }
