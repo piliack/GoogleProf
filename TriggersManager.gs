@@ -2,10 +2,25 @@
  * 
  */
 var TriggersManager = {
-  installAll : function() {
+
+    /**
+     * install instalables triggers for all the project files with _GP suffix
+     * 
+     * @func
+     * 
+     */
+  installProject : function() {
+    if (Main.authMode != ScriptApp.AuthMode.FULL) {
+      return;
+    }
+    
+    
+    
   },
 
   /**
+   * tool for install triggers on one file
+   * 
    * @function installFile
    * @param {SpreadSheet
    *          or Document}
@@ -19,7 +34,7 @@ var TriggersManager = {
     // verify installed trigger if authorization ok
     if (Main.authMode == ScriptApp.AuthMode.FULL && !dontVerifyOtherTriggers) {
       var triggers = ScriptApp.getUserTriggers(file);
-      
+
       for (var i = 0, l = triggers.length; i < l; i++) {
         if (file.getId() == triggers[i].getTriggerSourceId()) {
           if (triggers[i].getEventType() == Constants.ON_OPEN) {
