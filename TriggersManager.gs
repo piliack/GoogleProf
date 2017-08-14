@@ -4,6 +4,7 @@ var TriggersManager={
   },
   
   installFile:function(file) {
+    Logger.log('triggerManager install : ');
     Logger.log('triggerManager install : '+(file instanceof Spreadsheet));
   }
 }
