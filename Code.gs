@@ -1,3 +1,3 @@
-function myFunction() {
-  
+var o={
+    a:'a';
 }
