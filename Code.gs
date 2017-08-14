@@ -1,3 +1,2 @@
-var o={
-    a:'a';
-}
+
+var merde ={}
