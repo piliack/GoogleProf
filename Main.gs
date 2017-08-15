@@ -3,7 +3,7 @@
  */
 
 function onOpen(e) {
-  Logger.log("main open :" + e.authMode);
+  Logger.log("main open :" + e.authMode+','+e.source);
   Main.init(e);
   if (Main.authMode != ScriptApp.AuthMode.FULL) {
     AddOnMenuManager.createInstallMenu();
