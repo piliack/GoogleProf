@@ -3,19 +3,17 @@
  */
 var TriggersManager = {
 
-    /**
-     * install instalables triggers for all the project files with _GP suffix
-     * 
-     * @func
-     * 
-     */
+  /**
+   * install instalables triggers for all the project files with _GP suffix
+   * 
+   * @func
+   * 
+   */
   installProject : function() {
     if (Main.authMode != ScriptApp.AuthMode.FULL) {
       return;
     }
-    
-    
-    
+
   },
 
   /**
@@ -30,7 +28,7 @@ var TriggersManager = {
   installFile : function(file, dontVerifyOtherTriggers) {
     var haveOnOpen = false;
     var haveOnEdit = false;
-    var onOpenInstalled=false;
+    var onOpenInstalled = false;
 
     // verify installed trigger if authorization ok
     if (Main.authMode == ScriptApp.AuthMode.FULL && !dontVerifyOtherTriggers) {
@@ -52,16 +50,16 @@ var TriggersManager = {
     if (file.toString() == Constants.SPREADSHEET_TYPE) {
       if (!haveOnOpen) {
         try {
-          ScriptApp.newTrigger(Constants.ON_OPEN_FUNC)
-              .forSpreadsheet(file).onOpen().create();
-              onOpenInstalled=true;
+          ScriptApp.newTrigger(Constants.ON_OPEN_FUNC).forSpreadsheet(file)
+              .onOpen().create();
+          onOpenInstalled = true;
         } catch (e) {
         }
       }
       if (!haveOnEdit) {
         try {
-          ScriptApp.newTrigger(Constants.ON_EDIT_FUNC)
-              .forSpreadsheet(file).onEdit().create();
+          ScriptApp.newTrigger(Constants.ON_EDIT_FUNC).forSpreadsheet(file)
+              .onEdit().create();
         } catch (e) {
         }
       }
@@ -71,15 +69,15 @@ var TriggersManager = {
     if (file.toString() == Constants.DOCUMENT_TYPE) {
       if (!haveOnOpen) {
         try {
-          ScriptApp.newTrigger(Constants.ON_OPEN_FUNC).forDocument(
-              file).onOpen().create();
-              onOpenInstalled=true;
+          ScriptApp.newTrigger(Constants.ON_OPEN_FUNC).forDocument(file)
+              .onOpen().create();
+          onOpenInstalled = true;
         } catch (e) {
         }
       }
     }
-    
+
     return (onOpenInstalled || haveOnOpen);
-    
+
   }
 }
