@@ -5,11 +5,16 @@
 function onOpen(e) {
   Main.init(e);
   Logger.log('on open : ' + Main.authMode + ',' + ScriptApp.AuthMode.FULL);
-  if (Main.authMode != ScriptApp.AuthMode.FULL) {
-    Logger.log('on open 2 : ');
-    AddOnMenuManager.createInstallMenu();
-    Logger.log('on open 3 : ');
+  var a=Main.authMode.toString();
+  var b=ScriptApp.AuthMode.FULL;
+  var c='t';
+  var test=(Main.authMode!=ScriptApp.AuthMode.FULL);
+  if (test) {
+    Logger.log('on open false : ');
+    AddOnMenuManagerGP.createInstallMenuGP();
+    Logger.log('on open 2 false : ');
   } else {
+    Logger.log('on open true : ');
     Main.start();
   }
 }
@@ -28,7 +33,7 @@ function onEdit(e) {
 function onAddOnInstallMenu() {
   Main.init();
   var success = TriggersManager.installFile(Main.currentFile);
-  AddOnMenuManager.createInstallMenuReponseSidebar(success);
+  AddOnMenuManagerGP.createInstallMenuReponseSidebar(success);
   if (success) {
     Main.start();
   }
