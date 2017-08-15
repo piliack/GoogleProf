@@ -8,7 +8,7 @@ var LabelsToTranslate = {
     PROBLEM_OCCURED : 'A problem occured',
     OPERATION_SUCCESS : 'Operation success'
       
-  }
+  },
 
   getLabel:function(code,lang) {
     return this.en[code];
