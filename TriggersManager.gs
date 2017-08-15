@@ -32,7 +32,8 @@ var TriggersManager = {
 
     // verify installed trigger if authorization ok
     if (Main.authMode == ScriptApp.AuthMode.FULL && !dontVerifyOtherTriggers) {
-      var triggers = ScriptApp.getUserTriggers(file);
+      var triggers = [];
+      try {ScriptApp.getUserTriggers(file)} catch (er) {Logger.log('install file getusertrigger erro :'+er.message)};
 
       for (var i = 0, l = triggers.length; i < l; i++) {
         if (file.getId() == triggers[i].getTriggerSourceId()) {

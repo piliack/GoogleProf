@@ -3,7 +3,8 @@
  */
 var AddOnMenuManager = {
 
-  createInstallMenu : function() {
+  createInstallMenuGP : function() {
+  Logger.log('createInstallMenu');
     if (Main.fileApp != null) {
       Main.fileApp.getUi().createAddonMenu().addItem(
           LabelsToTranslate.INSTALL_MENU, Constants.ON_ADDON_INSTALL_MENU_FUNC)

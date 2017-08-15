@@ -3,12 +3,15 @@
  */
 
 function onOpen(e) {
-  Logger.log("main open :" + e.authMode + ',' + e.source);
-  Logger.log('ScriptApp.getUserTriggers : '+ScriptApp.getUserTriggers);
   Main.init(e);
-  if (Main.authMode != ScriptApp.AuthMode.FULL) {
-    AddOnMenuManager.createInstallMenu();
-  } else {
+  Logger.log('on open : '+Main.authMode+','+ScriptApp.AuthMode.FULL);
+  if (Main.authMode != ScriptApp.AuthMode.FULL) 
+  {
+    Logger.log('on open 2 : ');
+    AddOnMenuManager.createInstallMenuG();
+    Logger.log('on open 3 : ');
+  } 
+  else {
     Main.start();
   }
 }
@@ -25,9 +28,8 @@ function onEdit(e) {
  * 
  */
 function onAddOnInstallMenu() {
-  Logger.log('ScriptApp.getUserTriggers : '+ScriptApp.getUserTriggers);
   Main.init();
-  var success = TriggersManager.installFile(this.currentFile);
+  var success = TriggersManager.installFile(Main.currentFile);
   AddOnMenuManager.createInstallMenuReponseSidebar(success);
   if (success) {
     Main.start();
@@ -49,10 +51,8 @@ var Main = {
 
     if (e) {
       this.currentFile = e.source;
-      Logger.log('init e: ' + this.currentFile);
     } else {
       this.currentFile = SpreadsheetApp.getActiveSpreadsheet();
-      Logger.log('init sheet: ' + this.currentFile);
       if (!this.currentFile) {
         this.currentFile = DocumentApp.getActiveDocument();
       }
@@ -67,6 +67,8 @@ var Main = {
     } else if (this.currentFileType == Constants.DOCUMENT_TYPE) {
       this.fileApp = DocumentApp;
     }
+    
+    Logger.log('main init : '+this.authMode);
   },
 
   start : function() {
