@@ -3,7 +3,7 @@
  */
 var AddOnMenuManager = {
 
-  createInstallMenuGP : function() {
+  createInstallMenu : function() {
   Logger.log('createInstallMenu');
     if (Main.fileApp != null) {
       Main.fileApp.getUi().createAddonMenu().addItem(

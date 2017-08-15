@@ -4,14 +4,12 @@
 
 function onOpen(e) {
   Main.init(e);
-  Logger.log('on open : '+Main.authMode+','+ScriptApp.AuthMode.FULL);
-  if (Main.authMode != ScriptApp.AuthMode.FULL) 
-  {
+  Logger.log('on open : ' + Main.authMode + ',' + ScriptApp.AuthMode.FULL);
+  if (Main.authMode != ScriptApp.AuthMode.FULL) {
     Logger.log('on open 2 : ');
-    AddOnMenuManager.createInstallMenuG();
+    AddOnMenuManager.createInstallMenu();
     Logger.log('on open 3 : ');
-  } 
-  else {
+  } else {
     Main.start();
   }
 }
@@ -64,11 +62,12 @@ var Main = {
 
     if (this.currentFileType == Constants.SPREADSHEET_TYPE) {
       this.fileApp = SpreadsheetApp;
-    } else if (this.currentFileType == Constants.DOCUMENT_TYPE) {
+    } 
+    if (this.currentFileType == Constants.DOCUMENT_TYPE) {
       this.fileApp = DocumentApp;
     }
-    
-    Logger.log('main init : '+this.authMode);
+
+    Logger.log('main init : ' + this.authMode);
   },
 
   start : function() {
