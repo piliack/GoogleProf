@@ -30,6 +30,7 @@ var TriggersManager = {
   installFile : function(file, dontVerifyOtherTriggers) {
     var haveOnOpen = false;
     var haveOnEdit = false;
+    var onOpenInstalled=false;
 
     // verify installed trigger if authorization ok
     if (Main.authMode == ScriptApp.AuthMode.FULL && !dontVerifyOtherTriggers) {
@@ -53,6 +54,7 @@ var TriggersManager = {
         try {
           ScriptApp.newTrigger(Constants.ON_OPEN_FUNC)
               .forSpreadsheet(file).onOpen().create();
+              onOpenInstalled=true;
         } catch (e) {
         }
       }
@@ -71,9 +73,13 @@ var TriggersManager = {
         try {
           ScriptApp.newTrigger(Constants.ON_OPEN_FUNC).forDocument(
               file).onOpen().create();
+              onOpenInstalled=true;
         } catch (e) {
         }
       }
     }
+    
+    return (onOpenInstalled || haveOnOpen);
+    
   }
 }

@@ -3,10 +3,14 @@
  */
 
 function onOpen(e) {
-  Logger.log("main open :" + e.authMode);
+  Logger.log("main open :" + e.authMode+','+e.source);
+  console.log(ScriptApp);
   Main.init(e);
   if (Main.authMode != ScriptApp.AuthMode.FULL) {
     AddOnMenuManager.createInstallMenu();
+  }
+  else {
+    Main.start();
   }
 }
 
@@ -21,9 +25,13 @@ function onEdit(e) {
  * when user click on the install menu
  * 
  */
-function onAddOnInstallMenu(e) {
-  Logger.log('onAddOnInstallMenu : '+e);
-  //TriggersManager.installFile(this.currentFile);
+function onAddOnInstallMenu() {
+  Main.init();
+  var success=TriggersManager.installFile(this.currentFile);
+  AddOnMenuManager.createInstallMenuReponseSidebar(success);
+  if (success) {
+    Main.start();
+  }
 }
 
 /**
@@ -33,10 +41,35 @@ var Main = {
   authMode : null,
   currentFile:null,
   currentFileType : null,
+  fileApp:null,
 
   init : function(e) {
-    this.authMode = e.authMode;
+    //if no event object => click from menu => AuthMode.FULL
+    this.authMode = e?e.authMode:ScriptApp.AuthMode.FULL;
+    
+    if (e) {
     this.currentFile = e.source;
-    this.currentFileType = e.source.toString();
+    Logger.log('init e: '+this.currentFile);
+    }
+    else {
+      this.currentFile=SpreadsheetApp.getActiveSpreadsheet();
+      Logger.log('init sheet: '+this.currentFile);
+      if (!this.currentFile) {
+        this.currentFile=DocumentApp.getActiveDocument();
+      }
+    }
+        
+    if (this.currentFile) {
+      this.currentFileType = this.currentFile.toString();
+    }
+    
+    if (this.currentFileType == Constants.SPREADSHEET_TYPE) {
+      this.fileApp = SpreadsheetApp;
+    } else if (this.currentFileType == Constants.DOCUMENT_TYPE) {
+      this.fileApp = DocumentApp;
+    }
+  },
+  
+  start : function() {
   }
 }
