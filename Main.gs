@@ -4,27 +4,23 @@
 
 function onOpen(e) {
   Main.init(e);
-  Logger.log('on open : ' + Main.authMode + ',' + ScriptApp.AuthMode.FULL);
-  var a=Main.authMode.toString();
-  var b=ScriptApp.AuthMode.FULL;
-  var c='t';
-  var test=(Main.authMode!=ScriptApp.AuthMode.FULL);
-  if (test) {
-    Logger.log('on open false : ');
+  Logger.log('onOpen auth : ' + Main.authMode);
+  //if no authorization => install trigger to have authorization
+  if (Main.authMode != ScriptApp.AuthMode.FULL) {
     AddOnMenuManagerGP.createInstallMenuGP();
-    Logger.log('on open 2 false : ');
   } else {
-    Logger.log('on open true : ');
     Main.start();
   }
 }
 
 function onInstall(e) {
   Main.init(e);
+  Main.start();
 }
 
 function onEdit(e) {
   Main.init(e);
+  Main.start();
 }
 /**
  * when user click on the install menu
@@ -32,7 +28,7 @@ function onEdit(e) {
  */
 function onAddOnInstallMenu() {
   Main.init();
-  var success = TriggersManager.installFile(Main.currentFile);
+  var success = TriggersManager.installDoc(Main.currentFile);
   AddOnMenuManagerGP.createInstallMenuReponseSidebar(success);
   if (success) {
     Main.start();
@@ -46,7 +42,7 @@ var Main = {
   authMode : null,
   currentFile : null,
   currentFileType : null,
-  fileApp : null,
+  docApp : null,
 
   init : function(e) {
     // if no event object => click from menu => AuthMode.FULL
@@ -66,15 +62,16 @@ var Main = {
     }
 
     if (this.currentFileType == Constants.SPREADSHEET_TYPE) {
-      this.fileApp = SpreadsheetApp;
-    } 
-    if (this.currentFileType == Constants.DOCUMENT_TYPE) {
-      this.fileApp = DocumentApp;
+      this.docApp = SpreadsheetApp;
     }
-
-    Logger.log('main init : ' + this.authMode);
+    if (this.currentFileType == Constants.DOCUMENT_TYPE) {
+      this.docApp = DocumentApp;
+    }
   },
 
+  //all authorization is ok
   start : function() {
+    
   }
+  
 }
