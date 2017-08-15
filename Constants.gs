@@ -14,7 +14,7 @@ var Constants = {
     NONE : 'none',
     GP : 'gp',
     ACTIVITY_GP : 'activity_GP'
-  }
+  },
   
   GPFileSuffixs:{
     DEFAULT:'_GP',
