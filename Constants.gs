@@ -1,6 +1,7 @@
 var Constants = {
   SPREADSHEET_TYPE : 'Spreadsheet',
   DOCUMENT_TYPE : 'Document',
+  FILE_TYPE : 'File',
 
   EventFuncs : {
     ON_OPEN : 'onOpen',
@@ -13,5 +14,10 @@ var Constants = {
     NONE : 'none',
     GP : 'gp',
     ACTIVITY_GP : 'activity_GP'
+  }
+  
+  GPFileSuffixs:{
+    DEFAULT:'_GP',
+    PROJECT:'_P_GP'
   }
 }

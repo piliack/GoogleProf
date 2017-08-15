@@ -28,7 +28,7 @@ function onEdit(e) {
  */
 function onAddOnInstallMenu() {
   Main.init();
-  var success = TriggersManager.installDoc(Main.currentFile);
+  var success = TriggersManager.installDoc(Main.currentDoc);
   AddOnMenuManagerGP.createInstallMenuReponseSidebar(success);
   if (success) {
     Main.start();
@@ -40,8 +40,8 @@ function onAddOnInstallMenu() {
  */
 var Main = {
   authMode : null,
-  currentFile : null,
-  currentFileType : null,
+  currentDoc : null,
+  currentDocType : null,
   docApp : null,
 
   init : function(e) {
@@ -49,29 +49,29 @@ var Main = {
     this.authMode = e ? e.authMode : ScriptApp.AuthMode.FULL;
 
     if (e) {
-      this.currentFile = e.source;
+      this.currentDoc = e.source;
     } else {
-      this.currentFile = SpreadsheetApp.getActiveSpreadsheet();
-      if (!this.currentFile) {
-        this.currentFile = DocumentApp.getActiveDocument();
+      this.currentDoc = SpreadsheetApp.getActiveSpreadsheet();
+      if (!this.currentDoc) {
+        this.currentDoc = DocumentApp.getActiveDocument();
       }
     }
 
-    if (this.currentFile) {
-      this.currentFileType = this.currentFile.toString();
+    if (this.currentDoc) {
+      this.currentDocType = this.currentDoc.toString();
     }
 
-    if (this.currentFileType == Constants.SPREADSHEET_TYPE) {
+    if (this.currentDocType == Constants.SPREADSHEET_TYPE) {
       this.docApp = SpreadsheetApp;
     }
-    if (this.currentFileType == Constants.DOCUMENT_TYPE) {
+    if (this.currentDocType == Constants.DOCUMENT_TYPE) {
       this.docApp = DocumentApp;
     }
   },
 
   //all authorization is ok
   start : function() {
-    
+    FilesManager.getGPFileType(this.currentDoc);
   }
   
 }
