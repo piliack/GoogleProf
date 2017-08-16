@@ -11,13 +11,16 @@ var Constants = {
   },
 
   GPFileTypes : {
+    // file is not a part of a GP project
     NONE : 'none',
-    GP : 'gp',
-    ACTIVITY_GP : 'activity_GP'
+    GP : 'GP',
+    STUDENTS_GP : 'Students_GP',
+    CONFIG_GP : 'Config_GP',
+    ACTIVITY_GP : 'Activities_GP'
   },
-  
-  GPFileSuffixs:{
-    DEFAULT:'_GP',
-    PROJECT:'_P_GP'
+
+  GPFileSuffixs : {
+    DEFAULT : '_GP',
+    PROJECT : '_P_GP'
   }
 }

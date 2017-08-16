@@ -12,10 +12,26 @@ var FilesManager = {
       file = DriveApp.getFileById(file.getId());
     }
 
-    var folders = file.getParents;
-    while (folders.hasNext()) {
-      var folder = folders.next();
-      Logger.log('getGPFileType folder' + folder.getName());
+    // parse all folders parents to find a GP project root folder
+    var isGPRootFolderFound = false, folders = null, parentFolder = null, parentFolderName = null;
+    do {
+      folders = file.getParents();
+      parentFolder = folders.hasNext() ? folders.next() : null;
+      if (parentFolder) {
+        parentFolderName = parentFolder.getName();
+        isGPRootFolderFound = (parentFolderName.substring(
+            parentFolderName.length - Constants.GPFileSuffixs.PROJECT.length,
+            parentFolderName.length) == Constants.GPFileSuffixs.PROJECT);
+      }
+
+    } while (parentFolder && !isGPRootFolderFound);
+    
+    //if the file is not a part of a GP project => stop here, the type is know
+    if (!isGPRootFolderFound) {
+      return Constants.GPFileTypes.NONE;
     }
+    
+    
+
   }
 }
