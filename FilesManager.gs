@@ -6,9 +6,10 @@ var FilesManager = {
   /**
    * need auth FULL
    */
-  getGPFileType : function(file) {
+  getGPFileType: function (file) {
+
     if (file.toString() == Constants.SPREADSHEET_TYPE
-        || file.toString() == Constants.DOCUMENT_TYPE) {
+      || file.toString() == Constants.DOCUMENT_TYPE) {
       file = DriveApp.getFileById(file.getId());
     }
 
@@ -17,21 +18,21 @@ var FilesManager = {
     do {
       folders = file.getParents();
       parentFolder = folders.hasNext() ? folders.next() : null;
-      if (parentFolder) {
+      Logger.log('parent folder :' + parentFolder);
+      if (parentFolder) {        
         parentFolderName = parentFolder.getName();
         isGPRootFolderFound = (parentFolderName.substring(
-            parentFolderName.length - Constants.GPFileSuffixs.PROJECT.length,
-            parentFolderName.length) == Constants.GPFileSuffixs.PROJECT);
+          parentFolderName.length - Constants.GPFileSuffixs.PROJECT.length,
+          parentFolderName.length) == Constants.GPFileSuffixs.PROJECT);
       }
 
     } while (parentFolder && !isGPRootFolderFound);
-    
+
     //if the file is not a part of a GP project => stop here, the type is know
     if (!isGPRootFolderFound) {
       return Constants.GPFileTypes.NONE;
     }
-    
-    //ok
+
 
   }
 }
