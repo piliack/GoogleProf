@@ -13,6 +13,9 @@ function onOpen(e) {
   }
 }
 
+var o = {},
+
+
 function onInstall(e) {
   Main.init(e);
   Main.start();

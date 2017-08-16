@@ -4,7 +4,7 @@
 var AddOnMenuManagerGP = {
 
   // add install menu to adds on menu
-  createInstallMenuGP : function(), {
+  createInstallMenuGP : function() {
     Logger.log('createInstallMenu');
     var label = LabelsToTranslate.getLabel('INSTALL_MENU');
     SpreadsheetApp.getUi().createAddonMenu().addItem(label,
