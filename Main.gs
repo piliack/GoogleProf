@@ -76,22 +76,9 @@ function MainGPClass() {
 
   //all authorization is ok
   this.start = function() {
-    Logger.log('main start');
-    FilesManager.getGPFileType(this.currentDoc);
+    Logger.log('main start '+FilesManager.getGPFileType(this.currentDoc));
 
-    /**
-     * @type {ddd}
-     */
-    var toto;
+
   }
   
-}
-
-function testObj() {
-  this.toto='';
-
-  this.totoFunc=function (a) {
-
-  }
-
 }

@@ -64,5 +64,6 @@ var FilesManager = {
       return Constants.GPFileTypes.ACTIVITY_GP;
     }
 
+    return Constants.GPFileTypes.GP;
   }
 };
