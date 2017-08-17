@@ -20,4 +20,5 @@ var AddOnMenuManagerGP = {
     Main.docApp.getUi().showSidebar(htmlOutput);
   }
 
+  //test
 }
