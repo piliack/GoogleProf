@@ -4,7 +4,7 @@
 var TriggersManager = {
 
   installProject : function() {
-    if (Main.authMode !== ScriptApp.AuthMode.FULL) {
+    if (mainGP.authMode !== ScriptApp.AuthMode.FULL) {
 
     }
 
@@ -16,7 +16,7 @@ var TriggersManager = {
     var onOpenInstalled = false;
 
     // verify installed trigger if authorization ok
-    if (Main.authMode === ScriptApp.AuthMode.FULL) {
+    if (mainGP.authMode === ScriptApp.AuthMode.FULL) {
       var triggers = [];
         try {
             triggers = ScriptApp.getUserTriggers(doc);
@@ -36,7 +36,7 @@ var TriggersManager = {
     }
 
     // add instable triggers for spreadsheet
-    if (doc.toString() === Constants.SPREADSHEET_TYPE) {
+    if (doc.toString() === Constants.FileTypes.SPREADSHEET) {
       if (!haveOnOpen) {
         try {
           ScriptApp.newTrigger(Constants.EventFuncs.ON_OPEN).forSpreadsheet(doc)
@@ -55,7 +55,7 @@ var TriggersManager = {
     }
 
     // add instable trigger for document
-    if (doc.toString() === Constants.DOCUMENT_TYPE) {
+    if (doc.toString() === Constants.FileTypes.DOCUMENT) {
       if (!haveOnOpen) {
         try {
           ScriptApp.newTrigger(Constants.EventFuncs.ON_OPEN).forDocument(doc)

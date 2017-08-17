@@ -1,7 +1,10 @@
 var Constants = {
-  SPREADSHEET_TYPE : 'Spreadsheet',
-  DOCUMENT_TYPE : 'Document',
-  FILE_TYPE : 'File',
+  FileTypes: {
+    SPREADSHEET : 'Spreadsheet',
+    DOCUMENT : 'Document',
+    FILE : 'File',
+    FOLDER : 'Folder'
+  },
 
   EventFuncs : {
     ON_OPEN : 'onOpen',
@@ -16,6 +19,7 @@ var Constants = {
     GP : 'GP',
     STUDENTS_GP : 'Students_GP',
     CONFIG_GP : 'Config_GP',
+    SKILLS_GP : 'Skills_GP',
     ACTIVITY_GP : 'Activities_GP'
   },
 

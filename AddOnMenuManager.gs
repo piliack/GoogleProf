@@ -18,6 +18,6 @@ var AddOnMenuManagerGP = {
     var title = LabelsToTranslate.getLabel('INSTALL_RESULT_TITLE');
     var htmlOutput = HtmlService.createHtmlOutput('<p>' + message + '</p>')
         .setTitle(title);
-    Main.docApp.getUi().showSidebar(htmlOutput);
+    mainGP.docApp.getUi().showSidebar(htmlOutput);
   }
 };
