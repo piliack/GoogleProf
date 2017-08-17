@@ -1,23 +1,20 @@
 /**
  * manage all DriveApp files
  */
-var FilesManager = {
+var FilesManagerGP = {
 
   /**
    *
-   * @param file {FileFunc}
+   * @param file {Object}
    * @returns {string}
    */
   getGPFileType: function (file) {
 
-    if (file.toString() === Constants.FileTypes.SPREADSHEET
-      || file.toString() === Constants.FileTypes.DOCUMENT) {
+    if (file.toString() === ConstantsGP.FileTypes.SPREADSHEET
+      || file.toString() === ConstantsGP.FileTypes.DOCUMENT) {
       file = DriveApp.getFileById(file.getId());
     }
-    /**
-     *
-     * @type {FileFunc}
-     */
+
     var folder = file;
     var parentsFoldersNames = [];
 
@@ -31,8 +28,8 @@ var FilesManager = {
         parentFolderName = parentFolder.getName();
         parentsFoldersNames.push(parentFolderName);
         isGPRootFolderFound = (parentFolderName.substring(
-          parentFolderName.length - Constants.GPFileSuffixs.PROJECT.length,
-          parentFolderName.length) === Constants.GPFileSuffixs.PROJECT);
+          parentFolderName.length - ConstantsGP.GPFileSuffixs.PROJECT.length,
+          parentFolderName.length) === ConstantsGP.GPFileSuffixs.PROJECT);
       }
       folder = parentFolder;
     } while (parentFolder && !isGPRootFolderFound);
@@ -40,7 +37,7 @@ var FilesManager = {
 
     //if the file is not a part of a GP project => stop here, the type is know
     if (!isGPRootFolderFound) {
-      return Constants.GPFileTypes.NONE;
+      return ConstantsGP.GPFileTypes.NONE;
     }
 
     /**
@@ -48,22 +45,22 @@ var FilesManager = {
      */
     var fileName = file.getName();
 
-    if (fileName === Constants.GPFileTypes.CONFIG_GP) {
-      return Constants.GPFileTypes.CONFIG_GP;
+    if (fileName === ConstantsGP.GPFileTypes.CONFIG_GP) {
+      return ConstantsGP.GPFileTypes.CONFIG_GP;
     }
 
-    if (fileName === Constants.GPFileTypes.STUDENTS_GP) {
-      return Constants.GPFileTypes.STUDENTS_GP;
+    if (fileName === ConstantsGP.GPFileTypes.STUDENTS_GP) {
+      return ConstantsGP.GPFileTypes.STUDENTS_GP;
     }
 
-    if (fileName === Constants.GPFileTypes.SKILLS_GP) {
-      return Constants.GPFileTypes.SKILLS_GP;
+    if (fileName === ConstantsGP.GPFileTypes.SKILLS_GP) {
+      return ConstantsGP.GPFileTypes.SKILLS_GP;
     }
 
-    if (parentsFoldersNames.indexOf(Constants.GPFileTypes.ACTIVITY_GP) > -1) {
-      return Constants.GPFileTypes.ACTIVITY_GP;
+    if (parentsFoldersNames.indexOf(ConstantsGP.GPFileTypes.ACTIVITY_GP) > -1) {
+      return ConstantsGP.GPFileTypes.ACTIVITY_GP;
     }
 
-    return Constants.GPFileTypes.GP;
+    return ConstantsGP.GPFileTypes.GP;
   }
 };

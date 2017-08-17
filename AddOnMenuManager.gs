@@ -5,19 +5,22 @@
 var AddOnMenuManagerGP = {
 
   // add install menu to adds on menu
-  createInstallMenuGP : function() {
+  createInstallMenuGP: function () {
     Logger.log('createInstallMenu');
-    var label = LabelsToTranslate.getLabel('INSTALL_MENU');
+    var label = LabelsToTranslateGP.getLabel('INSTALL_MENU');
     SpreadsheetApp.getUi().createAddonMenu().addItem(label,
-        Constants.EventFuncs.ON_ADDON_INSTALL_MENU).addToUi();
+      ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU).addToUi();
   },
 
-  createInstallMenuReponseSidebar : function(success) {
-    var message = LabelsToTranslate.getLabel(success ? 'OPERATION_SUCCESS'
-        : 'PROBLEM_OCCURED');
-    var title = LabelsToTranslate.getLabel('INSTALL_RESULT_TITLE');
+  /**
+   *
+   * @param message {String}
+   */
+  createInstallMenuResponseSidebar: function (message) {
+
+    var title = LabelsToTranslateGP.getLabel('INSTALL_RESULT_TITLE');
     var htmlOutput = HtmlService.createHtmlOutput('<p>' + message + '</p>')
-        .setTitle(title);
+      .setTitle(title);
     mainGP.docApp.getUi().showSidebar(htmlOutput);
   }
 };

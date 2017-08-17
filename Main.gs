@@ -1,7 +1,7 @@
 /**
  * -------------- google events
- 
- 
+
+
  */
 
 function onOpen(e) {
@@ -24,31 +24,51 @@ function onEdit(e) {
   mainGP.init(e);
   mainGP.start();
 }
+
 /**
  * when user click on the install menu
- * 
+ *
  */
 function onAddOnInstallMenu() {
   mainGP.init();
-  var success = TriggersManager.installDoc(mainGP.currentDoc);
-  AddOnMenuManagerGP.createInstallMenuReponseSidebar(success);
+  //try to granted auth
+  var success = TriggersManagerGP.installDoc(mainGP.currentDoc);
+
+  var message;
+  //if no problem occurred
   if (success) {
-    mainGP.start();
+    //the current doc belong to a GP project?
+    var GPFileType = FilesManagerGP.getGPFileType(mainGP.currentDoc);
+
+    //if not stop here
+    if (GPFileType === ConstantsGP.GPFileTypes.NONE) {
+      message = LabelsToTranslateGP.en.INSTALL_NOT_GP_PROJECT;
+    }
+    //if ok start application
+    else {
+      message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.en.OPERATION_SUCCESS);
+      mainGP.start();
+    }
   }
+  else {
+    message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.en.PROBLEM_OCCURED);
+  }
+
+  AddOnMenuManagerGP.createInstallMenuResponseSidebar(message);
 }
 
-var mainGP=new MainGPClass();
+var mainGP = new MainGPClass();
 
 /**
  * mainGP Application
  */
 function MainGPClass() {
   this.authMode = null;
-    this.currentDoc = null;
-    this.currentDocType = null;
-    this.docApp = null;
+  this.currentDoc = null;
+  this.currentDocType = null;
+  this.docApp = null;
 
-  this.init = function(e) {
+  this.init = function (e) {
     // if no event object => click from menu => AuthMode.FULL
     this.authMode = e ? e.authMode : ScriptApp.AuthMode.FULL;
 
@@ -66,19 +86,19 @@ function MainGPClass() {
       this.currentDocType = this.currentDoc.toString();
     }
 
-    if (this.currentDocType === Constants.FileTypes.SPREADSHEET) {
+    if (this.currentDocType === ConstantsGP.FileTypes.SPREADSHEET) {
       this.docApp = SpreadsheetApp;
     }
-    if (this.currentDocType === Constants.FileTypes.DOCUMENT) {
+    if (this.currentDocType === ConstantsGP.FileTypes.DOCUMENT) {
       this.docApp = DocumentApp;
     }
   };
 
   //all authorization is ok
-  this.start = function() {
-    Logger.log('main start '+FilesManager.getGPFileType(this.currentDoc));
+  this.start = function () {
+    Logger.log('main start ' + FilesManagerGP.getGPFileType(this.currentDoc));
 
 
   }
-  
+
 }

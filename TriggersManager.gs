@@ -1,7 +1,7 @@
 /**
  * 
  */
-var TriggersManager = {
+var TriggersManagerGP = {
 
   installProject : function() {
     if (mainGP.authMode !== ScriptApp.AuthMode.FULL) {
@@ -36,10 +36,10 @@ var TriggersManager = {
     }
 
     // add instable triggers for spreadsheet
-    if (doc.toString() === Constants.FileTypes.SPREADSHEET) {
+    if (doc.toString() === ConstantsGP.FileTypes.SPREADSHEET) {
       if (!haveOnOpen) {
         try {
-          ScriptApp.newTrigger(Constants.EventFuncs.ON_OPEN).forSpreadsheet(doc)
+          ScriptApp.newTrigger(ConstantsGP.EventFuncs.ON_OPEN).forSpreadsheet(doc)
               .onOpen().create();
           onOpenInstalled = true;
         } catch (e) {
@@ -47,7 +47,7 @@ var TriggersManager = {
       }
       if (!haveOnEdit) {
         try {
-          ScriptApp.newTrigger(Constants.EventFuncs.ON_EDIT).forSpreadsheet(doc)
+          ScriptApp.newTrigger(ConstantsGP.EventFuncs.ON_EDIT).forSpreadsheet(doc)
               .onEdit().create();
         } catch (e) {
         }
@@ -55,10 +55,10 @@ var TriggersManager = {
     }
 
     // add instable trigger for document
-    if (doc.toString() === Constants.FileTypes.DOCUMENT) {
+    if (doc.toString() === ConstantsGP.FileTypes.DOCUMENT) {
       if (!haveOnOpen) {
         try {
-          ScriptApp.newTrigger(Constants.EventFuncs.ON_OPEN).forDocument(doc)
+          ScriptApp.newTrigger(ConstantsGP.EventFuncs.ON_OPEN).forDocument(doc)
               .onOpen().create();
           onOpenInstalled = true;
         } catch (e) {

@@ -1,4 +1,4 @@
-var Constants = {
+var ConstantsGP = {
   FileTypes: {
     SPREADSHEET : 'Spreadsheet',
     DOCUMENT : 'Document',
