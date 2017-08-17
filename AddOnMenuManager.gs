@@ -6,10 +6,13 @@ var AddOnMenuManagerGP = {
 
   // add install menu to adds on menu
   createInstallMenuGP: function () {
-    Logger.log('createInstallMenu');
     var label = LabelsToTranslateGP.getLabel('INSTALL_MENU');
-    SpreadsheetApp.getUi().createAddonMenu().addItem(label,
-      ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU).addToUi();
+
+    mainGP.docApp.getUi().createAddonMenu().addItem(label, ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU).addToUi();
+  },
+
+  createMenusGP: function () {
+
   },
 
   /**

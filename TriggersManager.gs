@@ -3,13 +3,6 @@
  */
 var TriggersManagerGP = {
 
-  installProject : function() {
-    if (mainGP.authMode !== ScriptApp.AuthMode.FULL) {
-
-    }
-
-  },
-
   installDoc : function(doc) {
     var haveOnOpen = false;
     var haveOnEdit = false;
