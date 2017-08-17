@@ -19,6 +19,4 @@ var AddOnMenuManagerGP = {
         .setTitle(title);
     Main.docApp.getUi().showSidebar(htmlOutput);
   }
-
-  //test
 }
