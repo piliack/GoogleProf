@@ -19,7 +19,7 @@ var TriggersManager = {
     if (Main.authMode === ScriptApp.AuthMode.FULL) {
       var triggers = [];
         try {
-            ScriptApp.getUserTriggers(doc)
+            triggers = ScriptApp.getUserTriggers(doc);
         } catch (er) {
             Logger.log('install doc getusertrigger erro :' + er.message)
         }
