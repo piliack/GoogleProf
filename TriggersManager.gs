@@ -3,44 +3,32 @@
  */
 var TriggersManager = {
 
-  /**
-   * install instalables triggers for all the project docs with _GP suffix
-   * 
-   * @func
-   * 
-   */
   installProject : function() {
-    if (Main.authMode != ScriptApp.AuthMode.FULL) {
-      return;
+    if (Main.authMode !== ScriptApp.AuthMode.FULL) {
+
     }
 
   },
 
-  /**
-   * tool for install triggers on one doc
-   * 
-   * @function installDoc
-   * @param {SpreadSheet
-   *          or Document}
-   * @param {boolean}
-   *          dontVerifyOtherTriggers
-   */
-  installDoc : function(doc, dontVerifyOtherTriggers) {
+  installDoc : function(doc) {
     var haveOnOpen = false;
     var haveOnEdit = false;
     var onOpenInstalled = false;
 
     // verify installed trigger if authorization ok
-    if (Main.authMode == ScriptApp.AuthMode.FULL && !dontVerifyOtherTriggers) {
+    if (Main.authMode === ScriptApp.AuthMode.FULL) {
       var triggers = [];
-      try {ScriptApp.getUserTriggers(doc)} catch (er) {Logger.log('install doc getusertrigger erro :'+er.message)};
-
-      for (var i = 0, l = triggers.length; i < l; i++) {
-        if (doc.getId() == triggers[i].getTriggerSourceId()) {
-          if (triggers[i].getEventType() == ScriptApp.EventType.ON_OPEN) {
+        try {
+            ScriptApp.getUserTriggers(doc)
+        } catch (er) {
+            Logger.log('install doc getusertrigger erro :' + er.message)
+        }
+        for (var i = 0, l = triggers.length; i < l; i++) {
+        if (doc.getId() === triggers[i].getTriggerSourceId()) {
+          if (triggers[i].getEventType() === ScriptApp.EventType.ON_OPEN) {
             haveOnOpen = true;
           }
-          if (triggers[i].getEventType() == ScriptApp.EventType.ON_EDIT) {
+          if (triggers[i].getEventType() === ScriptApp.EventType.ON_EDIT) {
             haveOnEdit = true;
           }
         }
@@ -48,7 +36,7 @@ var TriggersManager = {
     }
 
     // add instable triggers for spreadsheet
-    if (doc.toString() == Constants.SPREADSHEET_TYPE) {
+    if (doc.toString() === Constants.SPREADSHEET_TYPE) {
       if (!haveOnOpen) {
         try {
           ScriptApp.newTrigger(Constants.EventFuncs.ON_OPEN).forSpreadsheet(doc)
@@ -67,7 +55,7 @@ var TriggersManager = {
     }
 
     // add instable trigger for document
-    if (doc.toString() == Constants.DOCUMENT_TYPE) {
+    if (doc.toString() === Constants.DOCUMENT_TYPE) {
       if (!haveOnOpen) {
         try {
           ScriptApp.newTrigger(Constants.EventFuncs.ON_OPEN).forDocument(doc)
@@ -81,4 +69,4 @@ var TriggersManager = {
     return (onOpenInstalled || haveOnOpen);
 
   }
-}
+};

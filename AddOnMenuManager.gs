@@ -1,6 +1,7 @@
 /**
  * Manage the menu
  */
+
 var AddOnMenuManagerGP = {
 
   // add install menu to adds on menu
@@ -19,4 +20,4 @@ var AddOnMenuManagerGP = {
         .setTitle(title);
     Main.docApp.getUi().showSidebar(htmlOutput);
   }
-}
+};

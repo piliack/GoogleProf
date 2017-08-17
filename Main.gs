@@ -8,7 +8,7 @@ function onOpen(e) {
   Main.init(e);
   Logger.log('onOpen auth : ' + Main.authMode);
   //if no authorization => install trigger to have authorization
-  if (Main.authMode != ScriptApp.AuthMode.FULL) {
+  if (Main.authMode !== ScriptApp.AuthMode.FULL) {
     AddOnMenuManagerGP.createInstallMenuGP();
   } else {
     Main.start();
@@ -63,10 +63,10 @@ var Main = {
       this.currentDocType = this.currentDoc.toString();
     }
 
-    if (this.currentDocType == Constants.SPREADSHEET_TYPE) {
+    if (this.currentDocType === Constants.SPREADSHEET_TYPE) {
       this.docApp = SpreadsheetApp;
     }
-    if (this.currentDocType == Constants.DOCUMENT_TYPE) {
+    if (this.currentDocType === Constants.DOCUMENT_TYPE) {
       this.docApp = DocumentApp;
     }
   },
@@ -76,4 +76,4 @@ var Main = {
     FilesManager.getGPFileType(this.currentDoc);
   }
   
-}
+};

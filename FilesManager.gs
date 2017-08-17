@@ -8,8 +8,8 @@ var FilesManager = {
    */
   getGPFileType: function (file) {
 
-    if (file.toString() == Constants.SPREADSHEET_TYPE
-      || file.toString() == Constants.DOCUMENT_TYPE) {
+    if (file.toString() === Constants.SPREADSHEET_TYPE
+      || file.toString() === Constants.DOCUMENT_TYPE) {
       file = DriveApp.getFileById(file.getId());
     }
 
@@ -23,7 +23,7 @@ var FilesManager = {
         parentFolderName = parentFolder.getName();
         isGPRootFolderFound = (parentFolderName.substring(
           parentFolderName.length - Constants.GPFileSuffixs.PROJECT.length,
-          parentFolderName.length) == Constants.GPFileSuffixs.PROJECT);
+          parentFolderName.length) === Constants.GPFileSuffixs.PROJECT);
       }
 
     } while (parentFolder && !isGPRootFolderFound);
@@ -35,4 +35,4 @@ var FilesManager = {
 
 
   }
-}
+};

@@ -13,4 +13,4 @@ var LabelsToTranslate = {
   getLabel:function(code,lang) {
     return this.en[code];
   }
-}
+};

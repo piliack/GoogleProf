@@ -7,7 +7,7 @@ var Constants = {
     ON_OPEN : 'onOpen',
     ON_INSTALL : 'onInstall',
     ON_EDIT : 'onEdit',
-    ON_ADDON_INSTALL_MENU : 'onAddOnInstallMenu',
+    ON_ADDON_INSTALL_MENU : 'onAddOnInstallMenu'
   },
 
   GPFileTypes : {
@@ -23,4 +23,4 @@ var Constants = {
     DEFAULT : '_GP',
     PROJECT : '_P_GP'
   }
-}
+};
