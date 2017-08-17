@@ -87,14 +87,14 @@ function MainGPClass() {
 
       //if not stop here
       if (GPFileType === ConstantsGP.GPFileTypes.NONE) {
-        message = LabelsToTranslateGP.en.INSTALL_NOT_GP_PROJECT;
+        message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.INSTALL_NOT_GP_PROJECT);
       }
       else {
-        message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.en.INSTALL_SUCCEED);
+        message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.INSTALL_SUCCEED);
       }
     }
     else {
-      message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.en.INSTALL_FAILED);
+      message = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.INSTALL_FAILED);
     }
 
     AddOnMenuManagerGP.createInstallMenuResponseSidebar(message);

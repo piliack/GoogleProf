@@ -1,5 +1,16 @@
 var LabelsToTranslateGP = {
 
+  PROJECT_NAME:'PROJECT_NAME',
+
+  INSTALL_MENU : 'INSTALL_MENU',
+  INSTALL_RESULT_TITLE : 'INSTALL_RESULT_TITLE' ,
+  INSTALL_NOT_GP_PROJECT:'INSTALL_NOT_GP_PROJECT',
+  INSTALL_SUCCEED: 'INSTALL_SUCCEED',
+  INSTALL_FAILED: 'INSTALL_FAILED',
+
+  PROBLEM_OCCURRED : 'PROBLEM_OCCURRED',
+  OPERATION_SUCCESS : 'OPERATION_SUCCESS',
+
   en : {
     PROJECT_NAME:'GP',
 
@@ -9,7 +20,7 @@ var LabelsToTranslateGP = {
     INSTALL_SUCCEED: 'GP is installed on this document',
     INSTALL_FAILED: 'GP can\'t be installed on this document. Error occurred',
 
-    PROBLEM_OCCURED : 'A problem occurred',
+    PROBLEM_OCCURRED : 'A problem occurred',
     OPERATION_SUCCESS : 'Operation success'
       
   },
