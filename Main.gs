@@ -28,7 +28,7 @@ function onEdit(e) {
  */
 function onAddOnInstallMenu() {
   mainGP.init();
-
+  mainGP.install();
 }
 
 var mainGP = new MainGPClass();
