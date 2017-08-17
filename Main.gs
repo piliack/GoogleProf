@@ -73,6 +73,7 @@ var Main = {
 
   //all authorization is ok
   start : function() {
+    Logger.log('main start');
     FilesManager.getGPFileType(this.currentDoc);
   }
   

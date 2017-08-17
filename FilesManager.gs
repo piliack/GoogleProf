@@ -13,19 +13,20 @@ var FilesManager = {
       file = DriveApp.getFileById(file.getId());
     }
 
+    var folder=file;
+
     // parse all folders parents to find a GP project root folder
     var isGPRootFolderFound = false, folders = null, parentFolder = null, parentFolderName = null;
     do {
-      folders = file.getParents();
+      folders = folder.getParents();
       parentFolder = folders.hasNext() ? folders.next() : null;
       if (parentFolder) {
         parentFolderName = parentFolder.getName();
         isGPRootFolderFound = (parentFolderName.substring(
           parentFolderName.length - Constants.GPFileSuffixs.PROJECT.length,
           parentFolderName.length) === Constants.GPFileSuffixs.PROJECT);
-        Logger.log('parentFolder='+parentFolder+','+isGPRootFolderFound);
       }
-
+      folder=parentFolder;
     } while (parentFolder && !isGPRootFolderFound);
 
 
