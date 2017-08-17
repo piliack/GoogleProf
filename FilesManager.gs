@@ -48,15 +48,15 @@ var FilesManager = {
      */
     var fileName = file.getName();
 
-    if (filName === Constants.GPFileTypes.CONFIG_GP) {
+    if (fileName === Constants.GPFileTypes.CONFIG_GP) {
       return Constants.GPFileTypes.CONFIG_GP;
     }
 
-    if (filName === Constants.GPFileTypes.STUDENTS_GP) {
+    if (fileName === Constants.GPFileTypes.STUDENTS_GP) {
       return Constants.GPFileTypes.STUDENTS_GP;
     }
 
-    if (filName === Constants.GPFileTypes.SKILLS_GP) {
+    if (fileName === Constants.GPFileTypes.SKILLS_GP) {
       return Constants.GPFileTypes.SKILLS_GP;
     }
 
