@@ -2,26 +2,6 @@
  * -------------- GOOGLE EVENTS
  */
 
-var testObj=new TestClass();
-
-function TestClass() {
-  var toto=3;
-
-  this.set=function(){
-    toto+=1;
-  };
-
-  this.get=function() {
-    return toto;
-  }
-}
-
-function test() {
-  testObj.set();
-  testObj.set();
-  Logger.log(testObj.get());
-}
-
 function onOpen(e) {
   mainGP.init(e);
   Logger.log('onOpen auth : ' + mainGP.getAuthMode(e));
@@ -56,9 +36,12 @@ function onAddOnInstallMenu() {
 
 function onAddOnActivityMenu() {
   mainGP.init();
-
+  AddOnMenuManagerGP.createActivityMenuGP();
 }
 
+function onActivitySidebarHtml() {
+  Logger.log('onActivitySidebarHtml');
+}
 
 var mainGP = new MainGPClass();
 
@@ -70,11 +53,11 @@ function MainGPClass() {
    * @private
    * @type {String}
    */
-  this.authMode = null;
-  this.currentDoc = null;
-  this.currentDocType = null;
-  this.docApp = null;
-  this.isInitialized = false;
+  var authMode = null;
+  var currentDoc = null;
+  var currentDocType = null;
+  var docApp = null;
+  var isInitialized = false;
 
   this.getAuthMode = function (e) {
     if (this.authMode) {
