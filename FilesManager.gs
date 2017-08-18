@@ -3,6 +3,10 @@
  */
 var FilesManagerGP = {
 
+  getGPFileByType: function (type) {
+
+  },
+
   /**
    *
    * @param file {Object}

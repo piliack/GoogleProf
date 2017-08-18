@@ -9,7 +9,7 @@ var TriggersManagerGP = {
     var onOpenInstalled = false;
 
     // verify installed trigger if authorization ok
-    if (mainGP.authMode === ScriptApp.AuthMode.FULL) {
+    if (mainGP.getAuthMode() === ScriptApp.AuthMode.FULL) {
       var triggers = [];
         try {
             triggers = ScriptApp.getUserTriggers(doc);

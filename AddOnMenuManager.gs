@@ -7,8 +7,14 @@ var AddOnMenuManagerGP = {
   // add install menu to adds on menu
   createInstallMenuGP: function () {
     var label = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.INSTALL_MENU);
+    var func=ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU;
+    mainGP.getDocApp().getUi().createAddonMenu().addItem(label, func).addToUi();
+  },
 
-    mainGP.docApp.getUi().createAddonMenu().addItem(label, ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU).addToUi();
+  createActivityMenuGP: function () {
+    var label = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
+    var func=ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU;
+    mainGP.getDocApp().getUi().createAddonMenu().addItem(label, func).addToUi();
   },
 
   createMenusGP: function () {
@@ -19,11 +25,17 @@ var AddOnMenuManagerGP = {
    *
    * @param message {String}
    */
-  createInstallMenuResponseSidebar: function (message) {
-
-    var title = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.INSTALL_RESULT_TITLE);
+  createInstallSidebar: function (message) {
+    var title = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.INSTALL_SIDEBAR_TITLE);
     var htmlOutput = HtmlService.createHtmlOutput('<p>' + message + '</p>')
       .setTitle(title);
-    mainGP.docApp.getUi().showSidebar(htmlOutput);
+    mainGP.getDocApp().getUi().showSidebar(htmlOutput);
+  },
+
+  createActivitySidebar: function (message) {
+    var title = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_SIDEBAR_TITLE);
+    var htmlOutput = HtmlService.createHtmlOutput('<p>' + message + '</p>')
+      .setTitle(title);
+    mainGP.getDocApp().getUi().showSidebar(htmlOutput);
   }
 };

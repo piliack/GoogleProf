@@ -10,7 +10,8 @@ var ConstantsGP = {
     ON_OPEN : 'onOpen',
     ON_INSTALL : 'onInstall',
     ON_EDIT : 'onEdit',
-    ON_ADDON_INSTALL_MENU : 'onAddOnInstallMenu'
+    ON_ADDON_INSTALL_MENU : 'onAddOnInstallMenu',
+    ON_ADDON_ACTIVITY_MENU : 'onAddOnActivityMenu'
   },
 
   GPFileTypes : {
@@ -26,5 +27,9 @@ var ConstantsGP = {
   GPFileSuffixs : {
     DEFAULT : '_GP',
     PROJECT : '_P_GP'
+  },
+
+  HtmlFiles:{
+    ACTIVITY_SIDEBAR:'ActivitySideBar'
   }
 };
