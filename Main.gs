@@ -9,7 +9,7 @@ function testClass() {
 
   this.set=function(){
     toto+=1;
-  }
+  };
 
   this.get=function() {
     return toto;
@@ -24,7 +24,7 @@ function test() {
 
 function onOpen(e) {
   mainGP.init(e);
-  Logger.log('onOpen auth : ' + mainGP.getAuthMode(e)+);
+  Logger.log('onOpen auth : ' + mainGP.getAuthMode(e));
 
   //if no authorization => create install addon menu
   /*if (mainGP.authMode !== ScriptApp.AuthMode.FULL) {
