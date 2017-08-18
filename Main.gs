@@ -144,7 +144,7 @@ function MainGPClass() {
   };
 
   this.start = function () {
-    if (this.currentDocType === ConstantsGP.FileTypes.DOCUMENT) {
+    if (this.getCurrentDocType() === ConstantsGP.FileTypes.DOCUMENT) {
       AddOnMenuManagerGP.createActivityMenuGP();
     }
 
