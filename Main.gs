@@ -2,9 +2,9 @@
  * -------------- GOOGLE EVENTS
  */
 
-var testObj=new testClass();
+var testObj=new TestClass();
 
-function testClass() {
+function TestClass() {
   var toto=3;
 
   this.set=function(){
