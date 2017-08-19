@@ -84,7 +84,9 @@ function MainGPClass() {
       return this.currentDocType;
     }
 
-    if (this.currentDoc) {
+    var currentDoc=this.getCurrentDoc();
+
+    if (currentDoc) {
       this.currentDocType = this.currentDoc.toString();
     }
 
@@ -144,6 +146,9 @@ function MainGPClass() {
   };
 
   this.start = function () {
+    Logger.log('start');
+    AddOnMenuManagerGP.createActivityMenuGP();
+    
     if (this.getCurrentDocType() === ConstantsGP.FileTypes.DOCUMENT) {
       AddOnMenuManagerGP.createActivityMenuGP();
     }
