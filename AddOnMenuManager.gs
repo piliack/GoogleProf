@@ -35,7 +35,7 @@ var AddOnMenuManagerGP = {
 
   createActivitySidebar: function (message) {
     var title = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_SIDEBAR_TITLE);
-    var htmlOutput = HtmlService.createHtmlOutput('<p>' + message + '</p>')
+    var htmlOutput = HtmlService.createHtmlOutput(ConstantsGP.HtmlFiles.ACTIVITY_SIDEBAR)
       .setTitle(title);
     mainGP.getDocApp().getUi().showSidebar(htmlOutput);
   }

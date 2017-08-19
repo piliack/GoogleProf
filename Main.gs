@@ -30,8 +30,7 @@ function onEdit(e) {
  *
  */
 function onAddOnInstallMenu() {
-  mainGP.init();
-  //mainGP.install();
+  AddOnMenuManagerGP.createActivitySidebar();
 }
 
 function onAddOnActivityMenu() {
