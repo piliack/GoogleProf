@@ -8,7 +8,26 @@ var FilesManagerGP = {
   },
 
   getProjectFolderFromFile:function(file) {
-    //TODO
+    var folder = file;
+
+    // parse all folders parents to find a GP project root folder
+    var isGPRootFolderFound = false, folders = null, parentFolder = null, parentFolderName = null;
+
+    do {
+      folders = folder.getParents();
+      parentFolder = folders.hasNext() ? folders.next() : null;
+      if (parentFolder) {
+        parentFolderName = parentFolder.getName();
+        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName,ConstantsGP.GPFileSuffixs.PROJECT);
+      }
+      folder = parentFolder;
+    } while (parentFolder && !isGPRootFolderFound);
+
+    if (isGPRootFolderFound) {
+      return parentFolder;
+    }
+
+    return null;
   },
 
   /**
@@ -23,28 +42,10 @@ var FilesManagerGP = {
       file = DriveApp.getFileById(file.getId());
     }
 
-    var folder = file;
-    var parentsFoldersNames = [];
-
-    // parse all folders parents to find a GP project root folder
-    var isGPRootFolderFound = false, folders = null, parentFolder = null, parentFolderName = null;
-
-    do {
-      folders = folder.getParents();
-      parentFolder = folders.hasNext() ? folders.next() : null;
-      if (parentFolder) {
-        parentFolderName = parentFolder.getName();
-        parentsFoldersNames.push(parentFolderName);
-        isGPRootFolderFound = (parentFolderName.substring(
-          parentFolderName.length - ConstantsGP.GPFileSuffixs.PROJECT.length,
-          parentFolderName.length) === ConstantsGP.GPFileSuffixs.PROJECT);
-      }
-      folder = parentFolder;
-    } while (parentFolder && !isGPRootFolderFound);
-
+    var projectFolder=this.getProjectFolderFromFile(file);
 
     //if the file is not a part of a GP project => stop here, the type is know
-    if (!isGPRootFolderFound) {
+    if (!projectFolder) {
       return ConstantsGP.GPFileTypes.NONE;
     }
 
@@ -65,7 +66,7 @@ var FilesManagerGP = {
       return ConstantsGP.GPFileTypes.SKILLS_GP;
     }
 
-    if (parentsFoldersNames.indexOf(ConstantsGP.GPFileTypes.ACTIVITY_GP) > -1) {
+    if (UtilsGP.testSuffix(fileName,ConstantsGP.GPFileSuffixs.ACTIVITY)) {
       return ConstantsGP.GPFileTypes.ACTIVITY_GP;
     }
 

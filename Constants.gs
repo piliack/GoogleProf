@@ -25,7 +25,8 @@ var ConstantsGP = {
 
   GPFileSuffixs : {
     DEFAULT : '_GP',
-    PROJECT : '_P_GP'
+    PROJECT : '_P_GP',
+    ACTIVITY : '_A_GP'
   },
 
   HtmlFiles:{

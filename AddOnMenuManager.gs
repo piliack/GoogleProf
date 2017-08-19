@@ -7,7 +7,8 @@ var AddOnMenuManagerGP = {
   createActivityMenuGP: function () {
     var label = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
     var func=ConstantsGP.EventFuncs.ON_ADDON_ACTIVITY_MENU;
-    mainGP.docApp.getUi().createAddonMenu().addItem(label, func).addToUi();
+    //if webapps don't work
+    try {mainGP.docApp.getUi().createAddonMenu().addItem(label, func).addToUi()} catch (e) {};
   },
 
   createMenusGP: function () {
