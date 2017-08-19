@@ -30,12 +30,11 @@ function onEdit(e) {
  *
  */
 function onAddOnInstallMenu() {
-  AddOnMenuManagerGP.createActivitySidebar();
+  AddOnMenuManagerGP.createInstallSidebar();
 }
 
 function onAddOnActivityMenu() {
-  mainGP.init();
-  AddOnMenuManagerGP.createActivityMenuGP();
+  AddOnMenuManagerGP.createActivitySidebar();
 }
 
 function onActivitySidebarHtml() {
