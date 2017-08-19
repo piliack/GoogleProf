@@ -12,9 +12,8 @@ var AddOnMenuManagerGP = {
   },
 
   createActivityMenuGP: function () {
-  Logger.log('create menu');
     var label = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
-    var func=ConstantsGP.EventFuncs.ON_ADDON_INSTALL_MENU;
+    var func=ConstantsGP.EventFuncs.ON_ADDON_ACTIVITY_MENU;
     mainGP.getDocApp().getUi().createAddonMenu().addItem(label, func).addToUi();
   },
 
