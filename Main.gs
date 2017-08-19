@@ -34,6 +34,7 @@ function onAddOnInstallMenu() {
 }
 
 function onAddOnActivityMenu() {
+Logger.log('onAddOnActivityMenu');
   AddOnMenuManagerGP.createActivitySidebar();
 }
 
