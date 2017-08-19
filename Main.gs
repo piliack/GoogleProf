@@ -40,6 +40,9 @@ Logger.log('onAddOnActivityMenu');
 
 function onActivitySidebarHtml() {
   Logger.log('onActivitySidebarHtml');
+  var file=SpreadsheetApp.getActive();
+  var t=DriveApp.getFilesByName('SkillsGP');
+  Logger.log('onActivitySidebarHtml fin');
 }
 
 var mainGP = new MainGPClass();
