@@ -2,6 +2,10 @@
  * -------------- GOOGLE EVENTS
  */
 
+function test() {
+  Logger.log(DriveApp.getFoldersByName('dev_P_GP').next().getId());
+}
+
 function onOpen(e) {
   mainGP.init(e,null);
   mainGP.start();
@@ -17,15 +21,10 @@ function onEdit(e) {
 }
 
 function onAddOnActivityMenu() {
-  Logger.log('onAddOnActivityMenu');
   AddOnMenuManagerGP.createActivitySidebar();
 }
 
 function onActivitySidebarHtml() {
-  Logger.log('onActivitySidebarHtml');
-  var file = SpreadsheetApp.getActive();
-  var t = DriveApp.getFilesByName('SkillsGP');
-  Logger.log('onActivitySidebarHtml fin');
 }
 
 var mainGP = new MainGPClass();
@@ -78,6 +77,7 @@ function MainGPClass() {
     //init from webapps
     if (context) {
       this.projectFolderId=context.projectFolderId;
+      this.projectFolder=DriveApp.getFolderById(this.projectFolderId);
     }
     //from add on
     else {
@@ -95,7 +95,6 @@ function MainGPClass() {
   };
 
   this.start = function () {
-    Logger.log('start');
     AddOnMenuManagerGP.createActivityMenuGP();
 
     if (this.currentDocType() === ConstantsGP.FileTypes.DOCUMENT) {
