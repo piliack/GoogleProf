@@ -10,7 +10,6 @@ var ConstantsGP = {
     ON_OPEN : 'onOpen',
     ON_INSTALL : 'onInstall',
     ON_EDIT : 'onEdit',
-    ON_ADDON_INSTALL_MENU : 'onAddOnInstallMenu',
     ON_ADDON_ACTIVITY_MENU : 'onAddOnActivityMenu'
   },
 

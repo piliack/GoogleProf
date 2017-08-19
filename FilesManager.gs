@@ -7,6 +7,10 @@ var FilesManagerGP = {
 
   },
 
+  getProjectFolderFromFile:function(file) {
+    //TODO
+  },
+
   /**
    *
    * @param file {Object}
