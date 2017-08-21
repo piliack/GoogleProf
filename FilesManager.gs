@@ -7,7 +7,45 @@ var FilesManagerGP = {
 
   },
 
-  getProjectFolderFromFile:function(file) {
+  //TOTEST get a file by name in the current project
+  getProjectFileByName: function (name) {
+
+    return recurrentFunc(mainGP.projectFolder, name);
+
+    /** @param folder {FolderFunc}
+     *  @param name {string}
+     * */
+    function recurrentFunc(folder, name) {
+      //parse all files, return file if same name
+      /** @type {FileIteratorFunc}*/
+      var files = folder.getFiles();
+      /** @type {FileFunc}*/
+      var file = null;
+      while (files.hasNext()) {
+        file = files.next();
+        if (file.getName() === name) {
+          return file;
+        }
+      }
+      ;
+
+      //parse all folder
+      var folders = folder.getFolders();
+      /** @type {FolderFunc}*/
+      var parsedFolder = null;
+      while (folders.hasNext()) {
+        parsedFolder = folders.next();
+        file = recurrentFunc(parsedFolder, name);
+        if (file) {
+          return file;
+        }
+      }
+
+      return null;
+    }
+  },
+
+  getProjectFolderFromFile: function (file) {
     var folder = file;
 
     // parse all folders parents to find a GP project root folder
@@ -18,7 +56,7 @@ var FilesManagerGP = {
       parentFolder = folders.hasNext() ? folders.next() : null;
       if (parentFolder) {
         parentFolderName = parentFolder.getName();
-        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName,ConstantsGP.GPFileSuffixs.PROJECT);
+        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName, ConstantsGP.GPFileSuffixs.PROJECT);
       }
       folder = parentFolder;
     } while (parentFolder && !isGPRootFolderFound);
@@ -42,7 +80,7 @@ var FilesManagerGP = {
       file = DriveApp.getFileById(file.getId());
     }
 
-    var projectFolder=this.getProjectFolderFromFile(file);
+    var projectFolder = this.getProjectFolderFromFile(file);
 
     //if the file is not a part of a GP project => stop here, the type is know
     if (!projectFolder) {
@@ -66,7 +104,7 @@ var FilesManagerGP = {
       return ConstantsGP.GPFileTypes.SKILLS_GP;
     }
 
-    if (UtilsGP.testSuffix(fileName,ConstantsGP.GPFileSuffixs.ACTIVITY)) {
+    if (UtilsGP.testSuffix(fileName, ConstantsGP.GPFileSuffixs.ACTIVITY)) {
       return ConstantsGP.GPFileTypes.ACTIVITY_GP;
     }
 

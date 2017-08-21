@@ -2,17 +2,6 @@
  * -------------- GOOGLE EVENTS
  */
 
-function test() {
-  Logger.log(DriveApp.getFoldersByName('dev_P_GP').next().getId());
-}
-
-//place after init
-function debugGP() {
-  //dev_P_GP
-  var projectId = '0BzMpjz33ziJ4Tnl0amFJTEtKcjA';
-  mainGP.init(null, new ContextGPClass(projectId));
-}
-
 function onOpen(e) {
   mainGP.init(e, null);
   mainGP.start();
@@ -28,11 +17,13 @@ function onEdit(e) {
 }
 
 function onAddOnActivityMenu() {
-  debugGP();
+  mainGP.init(null, null);
+
   AddOnMenuManagerGP.createActivitySidebar();
 }
 
 function onActivitySidebarHtml() {
+
 }
 
 var mainGP = new MainGPClass();
@@ -41,6 +32,8 @@ var mainGP = new MainGPClass();
  * mainGP Application
  */
 function MainGPClass() {
+
+  this.debugMode=true;
 
   this.projectFolderId = '';
   /**
@@ -52,6 +45,10 @@ function MainGPClass() {
   this.currentDoc = null;
   this.currentDocType = '';
   this.docApp = null;
+
+  this.log=function(data) {
+    Logger.log(data);
+  };
 
   this.getCurrentDoc = function () {
     if (this.currentDoc) {
