@@ -14,3 +14,9 @@ function debugGetProjectFileByName() {
     mainGP.log('debugGetProjectFileByName fail ');
   }
 }
+
+function StudentsDataManagerGP_getDatas() {
+  DebugGP.init();
+  var file=FilesManagerGP.getProjectFileByName(ConstantsGP.GPFileTypes.STUDENTS_GP);
+  StudentsDataManagerGP.getDatas(Spreadsheet.open(file));
+}

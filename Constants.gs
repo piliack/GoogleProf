@@ -1,35 +1,49 @@
 var ConstantsGP = {
   FileTypes: {
-    SPREADSHEET : 'Spreadsheet',
-    DOCUMENT : 'Document',
-    FILE : 'File',
-    FOLDER : 'Folder'
+    SPREADSHEET: 'Spreadsheet',
+    DOCUMENT: 'Document',
+    FILE: 'File',
+    FOLDER: 'Folder'
   },
 
-  EventFuncs : {
-    ON_OPEN : 'onOpen',
-    ON_INSTALL : 'onInstall',
-    ON_EDIT : 'onEdit',
-    ON_ADDON_ACTIVITY_MENU : 'onAddOnActivityMenu'
+  EventFuncs: {
+    ON_OPEN: 'onOpen',
+    ON_INSTALL: 'onInstall',
+    ON_EDIT: 'onEdit',
+    ON_ADDON_ACTIVITY_MENU: 'onAddOnActivityMenu'
   },
 
-  GPFileTypes : {
+  GPFileTypes: {
     // file is not a part of a GP project
-    NONE : 'none',
-    GP : 'GP',
-    STUDENTS_GP : 'Students_GP',
-    CONFIG_GP : 'Config_GP',
-    SKILLS_GP : 'Skills_GP',
-    ACTIVITY_GP : 'Activities_GP'
+    NONE: 'none',
+    GP: 'GP',
+    STUDENTS_GP: 'Students_GP',
+    CONFIG_GP: 'Config_GP',
+    SKILLS_GP: 'Skills_GP',
+    ACTIVITY_GP: 'Activities_GP'
   },
 
-  GPFileSuffixs : {
-    DEFAULT : '_GP',
-    PROJECT : '_P_GP',
-    ACTIVITY : '_A_GP'
+  GPSuffixs: {
+    DEFAULT: '_GP',
+    PROJECT: '_P_GP',
+    ACTIVITY: '_A_GP',
+    //in Skills_GP file -> SO_P1_GP:LABEL
+    SKILLS_TYPE_SEPARATOR: ':',
+    SKILLS_ID_SEPARATOR: '_',
+    SKILLS_TYPES: {LABEL: 'LABEL', CODES: 'CODES', VALUES: 'VALUES'},
+    STUDENTS_SHEET_DISTRIB:'_DISTRIB_GP',
+    STUDENTS_SHEET_STUDENTS_GP:'STUDENTS_GP'
   },
 
-  HtmlFiles:{
-    ACTIVITY_SIDEBAR:'ActivitySideBar'
+  StudentsVars: {
+    IDS_GP:'IDS_GP',
+    FIRSTNAMES_GP:'FIRSTNAMES_GP',
+    LASTNAMES_GP:'LASTNAMES_GP',
+    LEVELS_GP:'LEVELS_GP',
+    BIRTHDAYS_GP:'BIRTHDAYS_GP',
+  },
+
+  HtmlFiles: {
+    ACTIVITY_SIDEBAR: 'ActivitySideBar'
   }
 };

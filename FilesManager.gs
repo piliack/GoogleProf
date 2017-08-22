@@ -7,7 +7,12 @@ var FilesManagerGP = {
 
   },
 
-  //TOTEST get a file by name in the current project
+  //get a file by name in the current project
+  /**
+   *
+   * @param name {string}
+   * @return {FileFunc}
+   */
   getProjectFileByName: function (name) {
 
     return recurrentFunc(mainGP.projectFolder, name);
@@ -56,7 +61,7 @@ var FilesManagerGP = {
       parentFolder = folders.hasNext() ? folders.next() : null;
       if (parentFolder) {
         parentFolderName = parentFolder.getName();
-        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName, ConstantsGP.GPFileSuffixs.PROJECT);
+        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName, ConstantsGP.GPSuffixs.PROJECT);
       }
       folder = parentFolder;
     } while (parentFolder && !isGPRootFolderFound);
@@ -104,7 +109,7 @@ var FilesManagerGP = {
       return ConstantsGP.GPFileTypes.SKILLS_GP;
     }
 
-    if (UtilsGP.testSuffix(fileName, ConstantsGP.GPFileSuffixs.ACTIVITY)) {
+    if (UtilsGP.testSuffix(fileName, ConstantsGP.GPSuffixs.ACTIVITY)) {
       return ConstantsGP.GPFileTypes.ACTIVITY_GP;
     }
 
