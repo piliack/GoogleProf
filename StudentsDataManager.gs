@@ -1,3 +1,9 @@
+function debug_StudentsDataManagerGP_getDatas() {
+  DebugGP.init();
+  var file=FilesManagerGP.getProjectFileByName(ConstantsGP.GPFileTypes.STUDENTS_GP);
+  console.log(StudentsDataManagerGP.getDatas(SpreadsheetApp.open(file)));
+}
+
 var StudentsDataManagerGP = {
   /**
    *

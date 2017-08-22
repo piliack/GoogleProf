@@ -44,6 +44,9 @@ var UtilsGP={
     var newArray=[];
     for (var i=0,l=array.length;i<l;i++) {
       for (var j=0,m=array[i].length;j<m;j++) {
+        if (!newArray[j]) {
+          newArray[j]=[];
+        }
         newArray[j][i]=array[i][j];
       }
     }
