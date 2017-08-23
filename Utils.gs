@@ -1,5 +1,5 @@
-var UtilsGP={
-  testSuffix:function (text, suffix) {
+var UtilsGP = {
+  testSuffix: function (text, suffix) {
     return (text.substring(text.length - suffix.length, text.length) === suffix);
   },
 
@@ -9,10 +9,10 @@ var UtilsGP={
    * @return first part
    * ex: for DEV_GP with _GP suffix return DEV
    */
-  getFirstPartSuffixed:function (text,suffix) {
-    var arr=text.split(suffix);
+  getFirstPartSuffixed: function (text, suffix) {
+    var arr = text.split(suffix);
     //split with suffix return first part and a second object empty
-    if (arr.length!==2 || arr[1]) {
+    if (arr.length !== 2 || arr[1]) {
       return null;
     }
 
@@ -26,9 +26,9 @@ var UtilsGP={
    * @param value {Object}
    * @return {Object}
    */
-  IndexOfArrayOfObject:function(arr,propertyName,value) {
-    for (var i=0,l=arr.length;i<l;i++) {
-      if (arr[i][propertyName]===value) {
+  IndexOfArrayOfObject: function (arr, propertyName, value) {
+    for (var i = 0, l = arr.length; i < l; i++) {
+      if (arr[i][propertyName] === value) {
         return i;
       }
     }
@@ -40,17 +40,44 @@ var UtilsGP={
    *
    * @param array {Array.<Array.<Object>>}
    */
-  inverse2DArray:function(array) {
-    var newArray=[];
-    for (var i=0,l=array.length;i<l;i++) {
-      for (var j=0,m=array[i].length;j<m;j++) {
+  inverse2DArray: function (array) {
+    var newArray = [];
+    for (var i = 0, l = array.length; i < l; i++) {
+      for (var j = 0, m = array[i].length; j < m; j++) {
         if (!newArray[j]) {
-          newArray[j]=[];
+          newArray[j] = [];
         }
-        newArray[j][i]=array[i][j];
+        newArray[j][i] = array[i][j];
       }
     }
 
     return newArray;
+  },
+
+  getValuesInArrayWithHeader: function (arr, header) {
+    var doCopy = false;
+    var returnArr = [];
+    for (var i = 0, l = arr.length; i < l; i++) {
+      if (!doCopy && arr[i] !== header) {
+        continue;
+      }
+
+      if (!doCopy && arr[i] === header) {
+        doCopy = true;
+        continue;
+      }
+
+      if (doCopy && arr[i] !== false && !arr[i]) {
+        break;
+      }
+
+      returnArr.push(arr[i]);
+    }
+
+    return returnArr;
   }
 };
+
+function debug_Utils_getValuesInArrayWithHeader() {
+  Logger.log(UtilsGP.getValuesInArrayWithHeader(['1','2','#','3','4','',''],'#'));
+}
