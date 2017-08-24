@@ -1,16 +1,15 @@
 function debug_StudentsDataManagerGP_getDatas() {
   DebugGP.init();
-  var file = FilesManagerGP.getProjectFileByName(ConstantsGP.GPFileTypes.STUDENTS_GP);
-  console.log(StudentsDataManagerGP.getDatas(SpreadsheetApp.open(file)));
+  console.log(StudentsDataManagerGP.getDatas());
 }
 
 var StudentsDataManagerGP = {
     /**
      *
-     * @param studentsSpreadsheet {SpreadsheetFunc}
      * @return {AllStudentsDataClassGP}
      */
-    getDatas: function (studentsSpreadsheet) {
+    getDatas: function () {
+      var studentsSpreadsheet=SpreadsheetApp.open(FilesManagerGP.getProjectFileByName(ConstantsGP.GPFileTypes.STUDENTS_GP));
       var allStudentsDatas = new AllStudentsDataClassGP();
 
       //parse all sheets

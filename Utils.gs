@@ -54,30 +54,6 @@ var UtilsGP = {
     return newArray;
   },
 
-  getValuesInArrayWithHeader: function (arr, header) {
-    var doCopy = false;
-    var returnArr = [];
-    for (var i = 0, l = arr.length; i < l; i++) {
-      if (!doCopy && arr[i] !== header) {
-        continue;
-      }
 
-      if (!doCopy && arr[i] === header) {
-        doCopy = true;
-        continue;
-      }
-
-      if (doCopy && arr[i] !== false && !arr[i]) {
-        break;
-      }
-
-      returnArr.push(arr[i]);
-    }
-
-    return returnArr;
-  }
 };
 
-function debug_Utils_getValuesInArrayWithHeader() {
-  Logger.log(UtilsGP.getValuesInArrayWithHeader(['1','2','#','3','4','',''],'#'));
-}

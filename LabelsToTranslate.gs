@@ -14,6 +14,7 @@ var LabelsToTranslateGP = {
 
   PROBLEM_OCCURRED : 'PROBLEM_OCCURRED',
   OPERATION_SUCCESS : 'OPERATION_SUCCESS',
+  DISTRIB_ERROR:'DISTRIB_ERROR',
 
 
 
@@ -32,11 +33,12 @@ var LabelsToTranslateGP = {
     INSTALL_FAILED: 'GP can\'t be installed on this document. Error occurred',
 
     PROBLEM_OCCURRED : 'A problem occurred',
-    OPERATION_SUCCESS : 'Operation success'
-      
+    OPERATION_SUCCESS : 'Operation success',
+
+    DISTRIB_ERROR:'The following distrib id don\'t exist : '
   },
 
-  getLabel:function(code,lang) {
+  getLabel:function(code) {
     return this.en[code];
   }
 };
