@@ -10,6 +10,10 @@ var PlanningManagerGP = {
    * @param spreadsheet {SpreadsheetFunc}
    */
   generatePlanning: function (spreadsheet) {
+    var sheets=spreadsheet.getSheets();
+    for (var i=0,l=sheets.length;i<l;i++) {
+      generateSheet(sheets[i]);
+    }
 
     /**
      *
@@ -176,4 +180,4 @@ var PlanningManagerGP = {
       }
     }
   }
-};
+}
