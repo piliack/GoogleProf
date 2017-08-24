@@ -6,7 +6,9 @@ function debug_PlanningManagerGP_generatePlanning() {
 
 var PlanningManagerGP = {
   /**
-   *
+   * TODO
+   * - control all inputs
+   * - manage less activities than group
    * @param spreadsheet {SpreadsheetFunc}
    */
   generatePlanning: function (spreadsheet) {
@@ -143,6 +145,8 @@ var PlanningManagerGP = {
       }
 
       var currentGroupIdsAugmented;
+      /** @type {RangeFunc} */
+      var sheetCellRange;
 
       //planning for each repetition
       for (var iRepetition = 0; iRepetition < valuesByGPVarName[ConstantsGP.PlanningVars.REPETITION_GP]; iRepetition++) {
@@ -153,7 +157,6 @@ var PlanningManagerGP = {
 
         //planned all the activities
         do {
-          var dayPlanning=startDatePlanning.getDay();
           //if the day is correct
           if (weekdays.indexOf(startDatePlanning.getDay()) > -1) {
             //for each time slot
@@ -166,8 +169,8 @@ var PlanningManagerGP = {
               endDate.setHours(timeSlotsEnds[i].getHours());
               endDate.setMinutes(timeSlotsEnds[i].getMinutes());
 
-              sheet.getRange(rowPlanning + 1, detailsCol + 1).setValue(startDate);
-              sheet.getRange(rowPlanning + 1, detailsCol + 2).setValue(endDate);
+              sheet.getRange(rowPlanning + 1, detailsCol + 1).setValue(startDate).setNumberFormat(ConstantsGP.Date.DATE_TIME_FORMAT_IN_SHEET);
+              sheet.getRange(rowPlanning + 1, detailsCol + 2).setValue(endDate).setNumberFormat(ConstantsGP.Date.TIME_FORMAT_IN_SHEET);
 
               for (iGroup = 0; iGroup < currentGroupIdsAugmented.length; iGroup++) {
                 if (!currentGroupIdsAugmented[iGroup]) {

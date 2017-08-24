@@ -35,6 +35,12 @@ var ConstantsGP = {
     STUDENTS_SHEET_STUDENTS_GP:'STUDENTS_GP'
   },
 
+  Date:{
+    DATE_FORMAT_IN_SHEET:'d/m/yyyy',
+    DATE_TIME_FORMAT_IN_SHEET:'d/m/yyyy h:mm',
+    TIME_FORMAT_IN_SHEET:'h:mm',
+  },
+
   StudentsVars: {
     IDS_GP:'IDS_GP',
     FIRSTNAMES_GP:'FIRSTNAMES_GP',
