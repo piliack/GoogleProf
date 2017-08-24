@@ -25,8 +25,8 @@ var ConstantsGP = {
 
   GPSuffixs: {
     DEFAULT: '_GP',
-    PROJECT: '_P_GP',
-    ACTIVITY: '_A_GP',
+    PROJECT_FOLDER: '_P_GP',
+    ACTIVITY_FILE: '_A_GP',
     //in Skills_GP file -> SO_P1_GP:LABEL
     SKILLS_TYPE_SEPARATOR: ':',
     SKILLS_ID_SEPARATOR: '_',

@@ -6,14 +6,15 @@ var UtilsGP = {
   /**
    * @param text {string}
    * @param suffix {string}
-   * @return first part
+   * @param [isStrict} {boolean} - if text have no suffix. in strict mode => return '' else return text
+   * @return {string} -  first part.
    * ex: for DEV_GP with _GP suffix return DEV
    */
-  getFirstPartSuffixed: function (text, suffix) {
+  getFirstPartSuffixed: function (text, suffix, isStrict) {
     var arr = text.split(suffix);
     //split with suffix return first part and a second object empty
     if (arr.length !== 2 || arr[1]) {
-      return null;
+      return isStrict ? '' : text;
     }
 
     return arr[0];

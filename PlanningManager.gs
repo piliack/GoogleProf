@@ -67,6 +67,14 @@ var PlanningManagerGP = {
         }
       }
 
+      //if the name of the file or sheet is enter, correct it by removing the GP suffix
+      valuesByGPVarName[ConstantsGP.PlanningVars.DISTRIB_GP]=UtilsGP.getFirstPartSuffixed(valuesByGPVarName[ConstantsGP.PlanningVars.DISTRIB_GP],ConstantsGP.GPSuffixs.STUDENTS_SHEET_DISTRIB);
+      tempArr=valuesByGPVarName[ConstantsGP.PlanningColVars.ACTIVITIES_GP];
+      l=tempArr.length;
+      for (i=0;i<l;i++) {
+        tempArr[i]=UtilsGP.getFirstPartSuffixed(tempArr[i],ConstantsGP.GPSuffixs.ACTIVITY_FILE);
+      }
+
       //get datas of students
       var allStudentsData = StudentsDataManagerGP.getDatas();
       //get the right distrib
@@ -145,6 +153,7 @@ var PlanningManagerGP = {
 
         //planned all the activities
         do {
+          var dayPlanning=startDatePlanning.getDay();
           //if the day is correct
           if (weekdays.indexOf(startDatePlanning.getDay()) > -1) {
             //for each time slot

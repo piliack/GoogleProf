@@ -61,7 +61,7 @@ var FilesManagerGP = {
       parentFolder = folders.hasNext() ? folders.next() : null;
       if (parentFolder) {
         parentFolderName = parentFolder.getName();
-        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName, ConstantsGP.GPSuffixs.PROJECT);
+        isGPRootFolderFound = UtilsGP.testSuffix(parentFolderName, ConstantsGP.GPSuffixs.PROJECT_FOLDER);
       }
       folder = parentFolder;
     } while (parentFolder && !isGPRootFolderFound);
@@ -109,7 +109,7 @@ var FilesManagerGP = {
       return ConstantsGP.GPFileTypes.SKILLS_GP;
     }
 
-    if (UtilsGP.testSuffix(fileName, ConstantsGP.GPSuffixs.ACTIVITY)) {
+    if (UtilsGP.testSuffix(fileName, ConstantsGP.GPSuffixs.ACTIVITY_FILE)) {
       return ConstantsGP.GPFileTypes.ACTIVITY_GP;
     }
 
