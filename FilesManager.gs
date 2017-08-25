@@ -78,7 +78,7 @@ var FilesManagerGP = {
    * @param file {Object}
    * @returns {string}
    */
-  getGPFileType: function (file) {
+  /*getGPFileType: function (file) {
 
     if (file.toString() === ConstantsGP.FileTypes.SPREADSHEET
       || file.toString() === ConstantsGP.FileTypes.DOCUMENT) {
@@ -92,9 +92,6 @@ var FilesManagerGP = {
       return ConstantsGP.GPFileTypes.NONE;
     }
 
-    /**
-     * @type {string}
-     */
     var fileName = file.getName();
 
     if (fileName === ConstantsGP.GPFileTypes.CONFIG_GP) {
@@ -114,5 +111,5 @@ var FilesManagerGP = {
     }
 
     return ConstantsGP.GPFileTypes.GP;
-  }
+  }*/
 };

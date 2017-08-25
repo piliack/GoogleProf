@@ -65,7 +65,7 @@ var CalendarManagerGP = {
         dateTime: end.toISOString()
       }
     };
-    var options={}
+    var options={};
     if (attachments) {
       event.attachments = attachments;
       options.supportsAttachments=true;
