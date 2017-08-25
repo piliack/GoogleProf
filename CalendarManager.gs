@@ -14,10 +14,13 @@ function debug_CalendarManagerGP_insertEvent() {
 }
 
 function debug_CalendarManagerGP_deleteEvent() {
+  DebugGP.init();
   var starDate=new Date();
   starDate.setHours(10);
   starDate.setMinutes(0);
-  CalendarManagerGP.deleteEventsByStartDateTime(starDate);
+  var endDate=new Date(starDate.valueOf());
+  endDate.setHours(endDate.getHours()+1);
+  CalendarManagerGP.deleteEventsByStartDateTime(starDate,endDate);
 }
 
 var CalendarManagerGP = {
@@ -74,9 +77,9 @@ var CalendarManagerGP = {
     return Calendar.Events.insert(event, calendar.getId());
   },
 
-  deleteEventsByStartDateTime: function (starDateTime) {
+  deleteEventsByStartDateTime: function (starDateTime,endDataTime) {
     var calendar = this.getProjectCalendar();
-    var events = calendar.getEvents(starDateTime, starDateTime);
+    var events = calendar.getEvents(starDateTime, endDataTime);
     for (var i = 0, l = events.length; i < l; i++) {
       events[i].deleteEvent();
     }
