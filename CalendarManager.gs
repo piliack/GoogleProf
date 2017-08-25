@@ -65,8 +65,10 @@ var CalendarManagerGP = {
         dateTime: end.toISOString()
       }
     };
+    var options={}
     if (attachments) {
       event.attachments = attachments;
+      options.supportsAttachments=true;
     }
     if (colorId !== undefined && colorId !== null && colorId >= 0) {
       event.colorId = colorId;
@@ -74,7 +76,7 @@ var CalendarManagerGP = {
 
     var calendar = this.getProjectCalendar();
 
-    return Calendar.Events.insert(event, calendar.getId());
+    return Calendar.Events.insert(event, calendar.getId(),options);
   },
 
   deleteEventsByStartDateTime: function (starDateTime,endDataTime) {
