@@ -5,7 +5,7 @@ var FilesManagerGP = {
 
   /**
    *
-   * @param file {FileFunc}
+   * @param file {(FileFunc|SpreadsheetFunc|DocumentFunc)}
    * @return {*}
    */
   testGPFile: function (file) {

@@ -27,19 +27,19 @@ function onActivitySidebarHtml() {
 }
 
 function onAddOnPlanningGenerateBySheet() {
-  mainGP.init();
+  mainGP.callPlanningOnFile(PlanningManagerGP.generateBySheet);
 }
 
 function onAddOnPlanningGenerateBySpreadsheet() {
-  mainGP.init();
+  mainGP.callPlanningOnFile(PlanningManagerGP.generateBySpreadSheet);
 }
 
 function onAddOnPlanningDeleteBySheet() {
-  mainGP.init();
+  mainGP.callPlanningOnFile(PlanningManagerGP.deleteBySheet);
 }
 
 function onAddOnPlanningDeleteBySpreadsheet() {
-  mainGP.init();
+  mainGP.callPlanningOnFile(PlanningManagerGP.deleteBySpreadSheet);
 }
 
 var mainGP = new MainGPClass();
@@ -49,20 +49,18 @@ var mainGP = new MainGPClass();
  */
 function MainGPClass() {
 
-  this.debugMode=true;
+  this.debugMode = true;
 
   this.projectFolderId = '';
-  /**
-   *
-   * @type {Folder}
-   */
+  /** @type {Folder}*/
   this.projectFolder = null;
-
+  /** @type {(DocumentFunc|SpreadsheetFunc)}*/
   this.currentDoc = null;
   this.currentDocType = '';
+  /** @type {(DocumentAppFunc|SpreadsheetAppFunc)}*/
   this.docApp = null;
 
-  this.log=function(data) {
+  this.log = function (data) {
     Logger.log(data);
   };
 
@@ -113,15 +111,27 @@ function MainGPClass() {
     AddOnMenuManagerGP.createMenusGP();
   };
 
-  this.callPlanningOnFile=function(func) {
+  /**
+   *
+   * @param func {Function}
+   */
+  this.callPlanningOnFile = function (func) {
     this.init();
 
-    if (!FilesManagerGP.testGPFile(this.currentDoc)) {
-      //AddOnMenuManagerGP.createMessageSidebar();
+    if (!FilesManagerGP.testGPFile(this.currentDoc) || this.currentDocType !== ConstantsGP.FileTypes.SPREADSHEET) {
+      AddOnMenuManagerGP.createMessageSidebar(
+        LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ERROR_TITLE),
+        LabelsToTranslateGP.getLabel(LabelsToTranslateGP.PLANNING_ERROR_FILE, ConstantsGP.GPSuffixs.DEFAULT, ConstantsGP.GPFileTypes.PLANNINGS_FOLDER_GP)
+      );
       return;
     }
 
-    var result=PlanningManagerGP['func']
+    var result = func(mainGP.currentDoc.getActiveSheet());
+
+    AddOnMenuManagerGP.createMessageSidebar(
+      LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING),
+      LabelsToTranslateGP.getLabel(result ? LabelsToTranslateGP.OPERATION_SUCCESS : LabelsToTranslateGP.PROBLEM_OCCURRED)
+    );
   }
 }
 

@@ -16,15 +16,12 @@ var AddOnMenuManagerGP = {
   },
 
   createMenusGP: function () {
-    var planningLabel = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
-    var planningGenerateLabel = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
-    var func = ConstantsGP.EventFuncs.ON_ADDON_ACTIVITY_MENU;
-    var menu = mainGP.docApp.getUi().createAddonMenu(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING))
+    mainGP.docApp.getUi().createAddonMenu(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING))
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_GENERATE_SHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_GENERATE_BY_SHEET)
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_DELETE_SHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_DELETE_BY_SHEET)
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_GENERATE_SPREADSHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_GENERATE_BY_SPREADSHEET)
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_DELETE_SPREADSHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_DELETE_BY_SPREADSHEET)
-      .addToUi()
+      .addToUi();
   },
 
   /**
