@@ -54,8 +54,8 @@ var LabelsToTranslateGP = {
 
     var index=0;
     for (var i=1,l=arguments.length;i<l;i++) {
-      index=i+1;
-      value.replace(new RegExp('#'+index+'#', 'g'), arguments[i]);
+      index=i;
+      value=value.replace(new RegExp('#'+index+'#', 'g'), arguments[i]);
     }
     return value;
   }
