@@ -71,11 +71,11 @@ var PlanningManagerGP = {
 
       //if the name of the file or sheet is enter, correct it by removing the GP suffix
       valuesByGPVarName[ConstantsGP.PlanningVars.DISTRIB_GP]=UtilsGP.getFirstPartSuffixed(valuesByGPVarName[ConstantsGP.PlanningVars.DISTRIB_GP],ConstantsGP.GPSuffixs.STUDENTS_SHEET_DISTRIB);
-      tempArr=valuesByGPVarName[ConstantsGP.PlanningColVars.ACTIVITIES_GP];
+      /*tempArr=valuesByGPVarName[ConstantsGP.PlanningColVars.ACTIVITIES_GP];
       l=tempArr.length;
       for (i=0;i<l;i++) {
         tempArr[i]=UtilsGP.getFirstPartSuffixed(tempArr[i],ConstantsGP.GPSuffixs.ACTIVITY_FILE);
-      }
+      }*/
 
       //get datas of students
       var allStudentsData = StudentsDataManagerGP.getDatas();
@@ -190,6 +190,30 @@ var PlanningManagerGP = {
           startDatePlanning.setDate(startDatePlanning.getDate() + 1);
         } while (iPlanning < activitiesLength)
       }
+    };
+
+    /**
+     *
+     * @param startDate {Date}
+     * @param endDate {Date}
+     * @param activityName {string}
+     * @param group {GroupDataClassGP}
+     */
+    function insertCalendarEvent(startDate,endDate,activityName,group) {
+      var studentIds=group.studentIds;
+      var file=FilesManagerGP.getProjectFileByName(activityName);
+      var attachments=[];
+      if (file) {
+        attachments.push(new CalendarEventAttachment(activityName,file.getUrl()));
+      }
+
+      var desc=activityName+"\n"+"\nGroup : "+"\n";
+      for (var i=0,l=studentIds.length;i<l;i++) {
+        desc+=studentIds[i]+", ";
+      }
+
+      CalendarManagerGP.deleteEventsByStartDateTime(startDate);
+      CalendarManagerGP.insertEvent(activityName,desc,startDate,endDate,attachments);
     }
   }
-}
+};

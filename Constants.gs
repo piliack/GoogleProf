@@ -36,8 +36,8 @@ var ConstantsGP = {
   },
 
   Date:{
-    DATE_FORMAT_IN_SHEET:'d/m/yyyy',
-    DATE_TIME_FORMAT_IN_SHEET:'d/m/yyyy h:mm',
+    DATE_FORMAT_IN_SHEET:'dd/m/yyyy',
+    DATE_TIME_FORMAT_IN_SHEET:'d/m/yyyy hh:mm',
     TIME_FORMAT_IN_SHEET:'h:mm',
   },
 
