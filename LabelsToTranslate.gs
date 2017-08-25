@@ -16,6 +16,11 @@ var LabelsToTranslateGP = {
   OPERATION_SUCCESS : 'OPERATION_SUCCESS',
   DISTRIB_ERROR:'DISTRIB_ERROR',
 
+  MENU_PLANNING:'MENU_PLANNING',
+  MENU_PLANNING_GENERATE_SHEET:'MENU_PLANNING_GENERATE_SHEET',
+  MENU_PLANNING_GENERATE_SPREADSHEET:'MENU_PLANNING_GENERATE_SPREADSHEET',
+  MENU_PLANNING_DELETE_SHEET:'MENU_PLANNING_DELETE_SHEET',
+  MENU_PLANNING_DELETE_SPREADSHEET:'MENU_PLANNING_DELETE_SPREADSHEET',
 
 
   en : {
@@ -35,7 +40,13 @@ var LabelsToTranslateGP = {
     PROBLEM_OCCURRED : 'A problem occurred',
     OPERATION_SUCCESS : 'Operation success',
 
-    DISTRIB_ERROR:'The following distrib id don\'t exist : '
+    DISTRIB_ERROR:'The following distrib id don\'t exist : ',
+
+    MENU_PLANNING:'Planning',
+    MENU_PLANNING_GENERATE_SHEET:'Generate with the current sheet',
+    MENU_PLANNING_GENERATE_SPREADSHEET:'Generate with the current spreadsheet',
+    MENU_PLANNING_DELETE_SHEET:'Delete with the current sheet',
+    MENU_PLANNING_DELETE_SPREADSHEET:'Delete with the current spreadsheet',
   },
 
   getLabel:function(code) {

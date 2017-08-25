@@ -16,7 +16,11 @@ var AddOnMenuManagerGP = {
   },
 
   createMenusGP: function () {
-
+    var planningLabel = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
+    var planningGenerateLabel = LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU);
+    var func = ConstantsGP.EventFuncs.ON_ADDON_ACTIVITY_MENU;
+    var menu=mainGP.docApp.getUi().createAddonMenu().addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.ACTIVITY_MENU), '')
+      .addToUi()
   },
 
   /**

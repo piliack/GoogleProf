@@ -274,12 +274,16 @@ var PlanningManagerGP = {
           startDate = value;
           endDate = sheet.getRange(row + 1, col + 2).getValue();
           CalendarManagerGP.deleteEventsByStartDateTime(startDate, endDate);
+          if (lCol - col > 0) {
+            sheet.getRange(row + 1, col + 1, 1, lCol - col).clearContent();
+          }
+
         }
 
         if (value === ConstantsGP.PlanningVars.DETAILS_GP) {
           numCol = lCol - col - 1;
           if (numCol > 0) {
-            //sheet.getRange(row + 1, col + 2, 1, numCol).clearContent();
+            sheet.getRange(row + 1, col + 2, 1, numCol).clearContent();
           }
 
           isFound = true;
