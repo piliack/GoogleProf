@@ -38,10 +38,10 @@ var LabelsToTranslateGP = {
     DISTRIB_ERROR:'The following distrib id don\'t exist : ',
 
     MENU_PLANNING:'Planning',
-    MENU_PLANNING_GENERATE_SHEET:'Generate with the current sheet',
-    MENU_PLANNING_GENERATE_SPREADSHEET:'Generate with the current spreadsheet',
-    MENU_PLANNING_DELETE_SHEET:'Delete with the current sheet',
-    MENU_PLANNING_DELETE_SPREADSHEET:'Delete with the current spreadsheet',
+    MENU_PLANNING_GENERATE_SHEET:'Planning : Generate with the current sheet',
+    MENU_PLANNING_GENERATE_SPREADSHEET:'Planning : Generate with the current spreadsheet',
+    MENU_PLANNING_DELETE_SHEET:'Planning : Delete with the current sheet',
+    MENU_PLANNING_DELETE_SPREADSHEET:'Planning : Delete with the current spreadsheet',
 
     PLANNING_ERROR_FILE:'You can only planned in a spreasheet with the #1# suffix in the file name. This file must be in the #2# folder. ',
   },

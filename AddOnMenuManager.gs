@@ -16,7 +16,7 @@ var AddOnMenuManagerGP = {
   },
 
   createMenusGP: function () {
-    mainGP.docApp.getUi().createAddonMenu(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING))
+    mainGP.docApp.getUi().createAddonMenu()
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_GENERATE_SHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_GENERATE_BY_SHEET)
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_DELETE_SHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_DELETE_BY_SHEET)
       .addItem(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.MENU_PLANNING_GENERATE_SPREADSHEET), ConstantsGP.EventFuncs.ON_ADDON_PLANNING_GENERATE_BY_SPREADSHEET)
@@ -28,14 +28,14 @@ var AddOnMenuManagerGP = {
    *
    * @param message {String}
    */
-  createMessageSidebar: function (title,message) {
+  createMessageSidebar: function (title, message) {
     var htmlOutput = HtmlService.createHtmlOutput('<p>' + message + '</p>').setTitle(title);
     mainGP.docApp.getUi().showSidebar(htmlOutput);
   },
 
-  createOperationResultSidebar:function (title,succeed) {
-    var code=succeed?LabelsToTranslateGP.OPERATION_SUCCESS:LabelsToTranslateGP.PROBLEM_OCCURRED;
-    this.createMessageSidebar(title,LabelsToTranslateGP.getLabel(code));
+  createOperationResultSidebar: function (title, succeed) {
+    var code = succeed ? LabelsToTranslateGP.OPERATION_SUCCESS : LabelsToTranslateGP.PROBLEM_OCCURRED;
+    this.createMessageSidebar(title, LabelsToTranslateGP.getLabel(code));
   },
 
   createActivitySidebar: function (message) {
