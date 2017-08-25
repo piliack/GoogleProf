@@ -183,7 +183,7 @@ var PlanningManagerGP = {
                   continue;
                 }
                 sheet.getRange(rowPlanning + 1, detailsCol + 3 + activityIndexs[iGroup]).setValue(currentGroupIdsAugmented[iGroup]);
-                insertCalendarEvent(startDate,endDate,activities[activityIndexs[iGroup]],distrib.groupsById[currentGroupIdsAugmented[iGroup]]);
+                insertCalendarEvent(startDate,endDate,activities[activityIndexs[iGroup]],distrib.groupsById[currentGroupIdsAugmented[iGroup]],valuesByGPVarName[ConstantsGP.PlanningVars.COLOR_GP]);
 
               }
 
@@ -206,8 +206,9 @@ var PlanningManagerGP = {
      * @param endDate {Date}
      * @param activityName {string}
      * @param group {GroupDataClassGP}
+     * @param color {number}
      */
-    function insertCalendarEvent(startDate,endDate,activityName,group) {
+    function insertCalendarEvent(startDate,endDate,activityName,group,color) {
       var studentIds=group.studentIds;
       var file=FilesManagerGP.getProjectFileByName(activityName);
       var attachments=[];
@@ -220,7 +221,7 @@ var PlanningManagerGP = {
         desc+=studentIds[i]+", ";
       }
 
-      CalendarManagerGP.insertEvent(activityName,desc,startDate,endDate,attachments);
+      CalendarManagerGP.insertEvent(activityName,desc,startDate,endDate,attachments,color);
     }
   }
 };

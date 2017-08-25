@@ -55,7 +55,8 @@ var ConstantsGP = {
     DISTRIB_GP:'DISTRIB_GP',
     REPETITION_GP:'REPETITION_GP',
     TYPE_GP:'TYPE_GP',
-    DETAILS_GP:'DETAILS_GP'
+    DETAILS_GP:'DETAILS_GP',
+    COLOR_GP:'COLOR_GP'
   },
 
   PlanningColVars:{
