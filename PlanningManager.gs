@@ -1,12 +1,12 @@
 function debug_PlanningManagerGP_generatePlanning() {
   DebugGP.init();
-  var file = FilesManagerGP.getProjectFileByName('Test_P_GP');
+  var file = FilesManagerGP.getProjectFileByName('Test_GP');
   PlanningManagerGP.generateBySpreadSheet(SpreadsheetApp.open(file));
 }
 
 function debug_PlanningManagerGP_deletePlanning() {
   DebugGP.init();
-  var file = FilesManagerGP.getProjectFileByName('Test_P_GP');
+  var file = FilesManagerGP.getProjectFileByName('Test_GP');
   PlanningManagerGP.deleteBySpreadSheet(SpreadsheetApp.open(file));
 }
 
@@ -267,15 +267,6 @@ var PlanningManagerGP = {
       for (row = 0; row < lRow; row++) {
         value = colRowArr[col][row];
 
-        if (value === ConstantsGP.PlanningVars.DETAILS_GP) {
-          numCol = lCol - col - 1;
-          if (numCol > 0) {
-            sheet.getRange(row + 1, col + 2, 1, numCol);
-          }
-
-          isFound = true;
-        }
-
         if (isFound) {
           if (!value) {
             return true;
@@ -283,6 +274,15 @@ var PlanningManagerGP = {
           startDate = value;
           endDate = sheet.getRange(row + 1, col + 2).getValue();
           CalendarManagerGP.deleteEventsByStartDateTime(startDate, endDate);
+        }
+
+        if (value === ConstantsGP.PlanningVars.DETAILS_GP) {
+          numCol = lCol - col - 1;
+          if (numCol > 0) {
+            //sheet.getRange(row + 1, col + 2, 1, numCol).clearContent();
+          }
+
+          isFound = true;
         }
       }
     }
