@@ -178,6 +178,7 @@ var PlanningManagerGP = {
                 }
                 sheet.getRange(rowPlanning + 1, detailsCol + 3 + activityIndexs[iGroup]).setValue(currentGroupIdsAugmented[iGroup]);
                 insertCalendarEvent(startDate,endDate,activities[activityIndexs[iGroup]],distrib.groupsById[currentGroupIdsAugmented[iGroup]]);
+
               }
 
               currentGroupIdsAugmented.unshift(currentGroupIdsAugmented.pop());
