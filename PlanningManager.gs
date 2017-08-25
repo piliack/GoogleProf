@@ -177,6 +177,7 @@ var PlanningManagerGP = {
                   continue;
                 }
                 sheet.getRange(rowPlanning + 1, detailsCol + 3 + activityIndexs[iGroup]).setValue(currentGroupIdsAugmented[iGroup]);
+                insertCalendarEvent(startDate,endDate,activities[activityIndexs[iGroup]],distrib.groupsById[currentGroupIdsAugmented[iGroup]]);
               }
 
               currentGroupIdsAugmented.unshift(currentGroupIdsAugmented.pop());
@@ -212,7 +213,7 @@ var PlanningManagerGP = {
         desc+=studentIds[i]+", ";
       }
 
-      CalendarManagerGP.deleteEventsByStartDateTime(startDate);
+      CalendarManagerGP.deleteEventsByStartDateTime(startDate,endDate);
       CalendarManagerGP.insertEvent(activityName,desc,startDate,endDate,attachments);
     }
   }
