@@ -11,6 +11,9 @@ var UtilsGP = {
    * ex: for DEV_GP with _GP suffix return DEV
    */
   getFirstPartSuffixed: function (text, suffix, isStrict) {
+    if (!text) {
+    return text;
+    }
     var arr = text.split(suffix);
     //split with suffix return first part and a second object empty
     if (arr.length !== 2 || arr[1]) {

@@ -1,3 +1,7 @@
+function debug_Main_init() {
+  mainGP.init();
+}
+
 /**
  * -------------- GOOGLE EVENTS
  */

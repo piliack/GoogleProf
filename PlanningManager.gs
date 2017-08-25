@@ -54,7 +54,7 @@ var PlanningManagerGP = {
     var col = 0, lCol = colRowArr.length;
     var row = 0, lRow = 0;
     //all value of the GP vars in the sheet
-    var valuesByGPVarName = {};
+    var valuesByGPVarName = {},numVars=0;
     var tempArr = [];
     var i = 0, l = 0, p = '';
     //the position of the DETAILS_GP var
@@ -69,16 +69,19 @@ var PlanningManagerGP = {
 
         //no vars beyond this row
         if (value === ConstantsGP.PlanningVars.DETAILS_GP) {
+          numVars++;
           detailsCol = col;
           detailsRow = row;
           break;
         }
         //simple var detected
         if (ConstantsGP.PlanningVars[value]) {
+          numVars++;
           valuesByGPVarName[value] = colRowArr[col + 1][row];
         }
         //var with value in col
         if (ConstantsGP.PlanningColVars[value]) {
+          numVars++;
           tempArr = [];
           for (i = row + 1; i < lRow; i++) {
             //empty cell is the end of the col
@@ -93,6 +96,11 @@ var PlanningManagerGP = {
           valuesByGPVarName[value] = tempArr;
         }
       }
+    }
+    
+    if (numVars<=0) {
+      throw "It's not a Planning_GP file";
+      return false;
     }
 
     //if the name of the file or sheet is enter, correct it by removing the GP suffix
@@ -290,6 +298,6 @@ var PlanningManagerGP = {
         }
       }
     }
-    return true;
+    return isFound;
   }
 };
