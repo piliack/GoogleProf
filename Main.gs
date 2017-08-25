@@ -3,7 +3,7 @@
  */
 
 function onOpen(e) {
-  mainGP.init();
+  mainGP.init(null,e);
   mainGP.start();
 }
 
@@ -13,7 +13,7 @@ function onInstall(e) {
 }
 
 function onEdit(e) {
-  mainGP.init();
+mainGP.init(null,e);
 }
 
 function onAddOnActivityMenu() {
@@ -84,27 +84,35 @@ function MainGPClass() {
   /**
    *
    * @param [context] {ContextGPClass}
+   * @param [e] {Events}
    */
-  this.init = function (context) {
-    //initProject
+  this.init = function (context,e) {
     //init from webapps
     if (context) {
       this.projectFolderId = context.projectFolderId;
-      this.projectFolder = DriveApp.getFolderById(this.projectFolderId);
+      try {this.projectFolder = DriveApp.getFolderById(this.projectFolderId)} catch (er) {}
     }
-    //from add on
+    //init from add on
+    else {
+    if (e) {
+      this.currentDoc=e.source;
+      this.currentDocType=this.currentDoc.toString();
+    }
     else {
       this.getCurrentDoc();
-      this.projectFolder = FilesManagerGP.getProjectFolderFromFile(this.currentDoc);
+      this.projectFolder = FilesManagerGP.getProjectFolderFromFileId(this.currentDoc.getId());
       this.projectFolderId = this.projectFolder.getId();
     }
-
+    
     if (this.currentDocType === ConstantsGP.FileTypes.SPREADSHEET) {
       this.docApp = SpreadsheetApp;
     }
     if (this.currentDocType === ConstantsGP.FileTypes.DOCUMENT) {
       this.docApp = DocumentApp;
     }
+    
+    }
+    Logger.log(this.currentDoc+','+this.currentDocType+','+this.docApp);
   };
 
   this.start = function () {

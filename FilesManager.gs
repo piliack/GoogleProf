@@ -55,6 +55,13 @@ var FilesManagerGP = {
     }
   },
 
+getProjectFolderFromFileId: function (fileId) {
+  this.getProjectFolderFromFile(DriveApp.getFileById(fileId));
+},
+
+/**
+* @param file {FileFunc}
+*/
   getProjectFolderFromFile: function (file) {
     var folder = file;
 
