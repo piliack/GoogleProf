@@ -10,7 +10,11 @@ var ConstantsGP = {
     ON_OPEN: 'onOpen',
     ON_INSTALL: 'onInstall',
     ON_EDIT: 'onEdit',
-    ON_ADDON_ACTIVITY_MENU: 'onAddOnActivityMenu'
+    ON_ADDON_ACTIVITY_MENU: 'onAddOnActivityMenu',
+    ON_ADDON_PLANNING_GENERATE_BY_SHEET:'onAddOnPlanningGenerateBySheet',
+    ON_ADDON_PLANNING_GENERATE_BY_SPREADSHEET:'onAddOnPlanningGenerateBySpreadsheet',
+    ON_ADDON_PLANNING_DELETE_BY_SHEET:'onAddOnPlanningDeleteBySheet',
+    ON_ADDON_PLANNING_DELETE_BY_SPREADSHEET:'onAddOnPlanningDeleteBySpreadsheet',
   },
 
   GPFileTypes: {
@@ -20,7 +24,8 @@ var ConstantsGP = {
     STUDENTS_GP: 'Students_GP',
     CONFIG_GP: 'Config_GP',
     SKILLS_GP: 'Skills_GP',
-    ACTIVITY_GP: 'Activities_GP'
+    ACTIVITIES_FOLDER_GP: 'Activities_GP',
+    PLANNINGS_FOLDER_GP: 'Plannings_GP'
   },
 
   GPSuffixs: {

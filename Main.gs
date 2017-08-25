@@ -3,27 +3,43 @@
  */
 
 function onOpen(e) {
-  mainGP.init(e, null);
+  mainGP.init();
   mainGP.start();
 }
 
 function onInstall(e) {
-  mainGP.init(e, null);
+  mainGP.init();
   mainGP.start();
 }
 
 function onEdit(e) {
-  mainGP.init(e, null);
+  mainGP.init();
 }
 
 function onAddOnActivityMenu() {
-  mainGP.init(null, null);
+  mainGP.init();
 
   AddOnMenuManagerGP.createActivitySidebar();
 }
 
 function onActivitySidebarHtml() {
 
+}
+
+function onAddOnPlanningGenerateBySheet() {
+  mainGP.init();
+}
+
+function onAddOnPlanningGenerateBySpreadsheet() {
+  mainGP.init();
+}
+
+function onAddOnPlanningDeleteBySheet() {
+  mainGP.init();
+}
+
+function onAddOnPlanningDeleteBySpreadsheet() {
+  mainGP.init();
 }
 
 var mainGP = new MainGPClass();
@@ -69,10 +85,9 @@ function MainGPClass() {
 
   /**
    *
-   * @param e {EventObject}
-   * @param context {ContextGPClass}
+   * @param [context] {ContextGPClass}
    */
-  this.init = function (e, context) {
+  this.init = function (context) {
     //initProject
     //init from webapps
     if (context) {
@@ -95,12 +110,19 @@ function MainGPClass() {
   };
 
   this.start = function () {
-    if (this.currentDocType === ConstantsGP.FileTypes.DOCUMENT) {
-      AddOnMenuManagerGP.createActivityMenuGP();
-    }
-
     AddOnMenuManagerGP.createMenusGP();
   };
+
+  this.callPlanningOnFile=function(func) {
+    this.init();
+
+    if (!FilesManagerGP.testGPFile(this.currentDoc)) {
+      //AddOnMenuManagerGP.createMessageSidebar();
+      return;
+    }
+
+    var result=PlanningManagerGP['func']
+  }
 }
 
 /**

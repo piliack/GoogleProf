@@ -1,19 +1,19 @@
+function debug_LabelsToTranslateGP_getLabel() {
+  DebugGP.init();
+  Logger.log(LabelsToTranslateGP.getLabel(LabelsToTranslateGP.PLANNING_ERROR_FILE,'_GP','folder'));
+}
+
 var LabelsToTranslateGP = {
 
   PROJECT_NAME:'PROJECT_NAME',
 
-  INSTALL_MENU : 'INSTALL_MENU',
   ACTIVITY_MENU:'ACTIVITY_MENU',
-
-  INSTALL_SIDEBAR_TITLE : 'INSTALL_SIDEBAR_TITLE' ,
   ACTIVITY_SIDEBAR_TITLE : 'ACTIVITY_SIDEBAR_TITLE' ,
-
-  INSTALL_NOT_GP_PROJECT:'INSTALL_NOT_GP_PROJECT',
-  INSTALL_SUCCEED: 'INSTALL_SUCCEED',
-  INSTALL_FAILED: 'INSTALL_FAILED',
 
   PROBLEM_OCCURRED : 'PROBLEM_OCCURRED',
   OPERATION_SUCCESS : 'OPERATION_SUCCESS',
+  ERROR_TITLE:'',
+
   DISTRIB_ERROR:'DISTRIB_ERROR',
 
   MENU_PLANNING:'MENU_PLANNING',
@@ -22,23 +22,18 @@ var LabelsToTranslateGP = {
   MENU_PLANNING_DELETE_SHEET:'MENU_PLANNING_DELETE_SHEET',
   MENU_PLANNING_DELETE_SPREADSHEET:'MENU_PLANNING_DELETE_SPREADSHEET',
 
+  PLANNING_ERROR_FILE:'PLANNING_ERROR_FILE',
 
   en : {
     PROJECT_NAME:'GP',
 
-    INSTALL_MENU : 'Install',
     ACTIVITY_MENU:'Activity manager',
 
-    INSTALL_SIDEBAR_TITLE : 'Install result',
     ACTIVITY_SIDEBAR_TITLE : 'Activity',
-
-
-    INSTALL_NOT_GP_PROJECT:'The current Document don\'t  belong to a GP project',
-    INSTALL_SUCCEED: 'GP is installed on this document',
-    INSTALL_FAILED: 'GP can\'t be installed on this document. Error occurred',
 
     PROBLEM_OCCURRED : 'A problem occurred',
     OPERATION_SUCCESS : 'Operation success',
+    ERROR_TITLE:'Error',
 
     DISTRIB_ERROR:'The following distrib id don\'t exist : ',
 
@@ -47,9 +42,21 @@ var LabelsToTranslateGP = {
     MENU_PLANNING_GENERATE_SPREADSHEET:'Generate with the current spreadsheet',
     MENU_PLANNING_DELETE_SHEET:'Delete with the current sheet',
     MENU_PLANNING_DELETE_SPREADSHEET:'Delete with the current spreadsheet',
+
+    PLANNING_ERROR_FILE:'You can only planned in a spreasheet with the #1# suffix in the file name. This file must be in the #2# folder. ',
   },
 
   getLabel:function(code) {
-    return this.en[code];
+    var value=this.en[code];
+    if (!value) {
+      return value;
+    }
+
+    var index=0;
+    for (var i=1,l=arguments.length;i<l;i++) {
+      index=i+1;
+      value.replace(new RegExp('#'+index+'#', 'g'), arguments[i]);
+    }
+    return value;
   }
 };

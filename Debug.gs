@@ -1,6 +1,6 @@
 var DebugGP={
   init:function() {
-    mainGP.init(null, new ContextGPClass(DriveApp.getFoldersByName('dev_P_GP').next().getId()));
+    mainGP.init(new ContextGPClass(DriveApp.getFoldersByName('dev_P_GP').next().getId()));
   }
 };
 

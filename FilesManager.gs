@@ -3,8 +3,13 @@
  */
 var FilesManagerGP = {
 
-  getGPFileByType: function (type) {
-
+  /**
+   *
+   * @param file {FileFunc}
+   * @return {*}
+   */
+  testGPFile: function (file) {
+    return UtilsGP.testSuffix(file.getName(),ConstantsGP.GPSuffixs.DEFAULT);
   },
 
   //get a file by name in the current project
