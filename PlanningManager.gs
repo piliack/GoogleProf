@@ -113,6 +113,7 @@ var PlanningManagerGP = {
       return false;
     }
 
+
     //TODO manage public holiday
 
     //purge details part on sheet
