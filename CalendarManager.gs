@@ -45,7 +45,7 @@ var CalendarManagerGP = {
 
   /**
    *
-   * @param summary {string}
+   * @param summaryP {string}
    * @param description {string}
    * @param start {Date}
    * @param end {Date}
@@ -54,9 +54,9 @@ var CalendarManagerGP = {
    * @return {CalendarEventFunc}
    */
 
-  insertEvent: function (summary, description, start, end, attachments, colorId) {
+  insertEvent: function (summaryP, description, start, end, attachments, colorId) {
     var event = {
-      summary: summary,
+      summary: summaryP,
       description: description,
       start: {
         dateTime: start.toISOString()

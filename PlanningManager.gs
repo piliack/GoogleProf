@@ -90,8 +90,13 @@ var PlanningManagerGP = {
       //TODO manage public holiday
 
       //purge details part on sheet
+      //purge value
       sheet.getRange(detailsRow + 1, detailsCol + 2, lRow - detailsRow, lCol - detailsCol - 1).clearContent();
+      //purge col beneath DETAILS_GP
+      if (lRow - detailsRow - 1>0) {
       sheet.getRange(detailsRow + 2, detailsCol + 1, lRow - detailsRow - 1).clearContent();
+      }
+      
 
       //build activities header in details part
       var activities = valuesByGPVarName[ConstantsGP.PlanningColVars.ACTIVITIES_GP].slice();
@@ -171,6 +176,7 @@ var PlanningManagerGP = {
 
               sheet.getRange(rowPlanning + 1, detailsCol + 1).setValue(startDate).setNumberFormat(ConstantsGP.Date.DATE_TIME_FORMAT_IN_SHEET);
               sheet.getRange(rowPlanning + 1, detailsCol + 2).setValue(endDate).setNumberFormat(ConstantsGP.Date.TIME_FORMAT_IN_SHEET);
+              CalendarManagerGP.deleteEventsByStartDateTime(startDate,endDate);
 
               for (iGroup = 0; iGroup < currentGroupIdsAugmented.length; iGroup++) {
                 if (!currentGroupIdsAugmented[iGroup]) {
@@ -209,12 +215,11 @@ var PlanningManagerGP = {
         attachments.push(new CalendarEventAttachment(activityName,file.getUrl()));
       }
 
-      var desc=activityName+"\n"+"\nGroup : "+"\n";
+      var desc=activityName+"\n"+"\nGroup "+group.id+" : "+"\n";
       for (var i=0,l=studentIds.length;i<l;i++) {
         desc+=studentIds[i]+", ";
       }
 
-      CalendarManagerGP.deleteEventsByStartDateTime(startDate,endDate);
       CalendarManagerGP.insertEvent(activityName,desc,startDate,endDate,attachments);
     }
   }
